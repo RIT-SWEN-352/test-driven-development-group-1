@@ -1,0 +1,51 @@
+package edu.rit.swen352.tdd.hard;
+
+import java.util.NoSuchElementException;
+
+/**
+ * A fixed-sized, generic, FIFO Queue that uses modulo indexes to “circle around” around
+ * the end of the array.  All elements must be non-{@code null}.
+ *
+ * <p>
+ *   If you need help with the implementation, see:
+ *   <a href='https://en.wikipedia.org/wiki/Circular_buffer'>Circular Buffer</a> (Wikipedia).
+ * </p>
+ *
+ * <p>
+ * You must implement these features:
+ * <ul>
+ *   <li>constructor:
+ *     <ul>
+ *       <li>a ctor that supplies the capacity, as an {@code int}</li>
+ *       <li>and a no-arg ctor that defaults the capacity to 16</li>
+ *       <li>NFR: once set, the capacity must be fixed</li>
+ *     </ul>
+ *   </li>
+ *   <li>{@code getCapacity()}: returns the fixed capacity of the queue</li>
+ *   <li>{@code isEmpty()}: queries if the queue is empty</li>
+ *   <li>{@code add(element:T)}:
+ *     <ul>
+ *       <li>inserts an element at the end of the queue if it is not full</li>
+ *       <li>throws {@link IllegalStateException} if the queue is full</li>
+ *     </ul>
+ *   </li>
+ *   <li>{@code remove(element:T)}:
+ *     <ul>
+ *       <li>removes an element from the front of the queue if it is not empty</li>
+ *       <li>throws {@link NoSuchElementException} if the queue is empty</li>
+ *     </ul>
+ *   </li>
+ *   <li>{@code element():T}:
+ *     <ul>
+ *       <li>retrieves, but does not remove, an element from the front of the queue if it is not empty</li>
+ *       <li>throws {@link NoSuchElementException} if the queue is empty</li>
+ *     </ul>
+ *   </li>
+ *   <li>NFR: you must ensure that the size of the internal array never changes</li>
+ *   <li>NFR: the queue must not keep references to any removed element</li>
+ * </ul>
+ *
+ * @param <T> the type of elements in the queue.
+ */
+public class CircularQueue<T> {
+}
