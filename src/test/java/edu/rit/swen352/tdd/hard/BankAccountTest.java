@@ -15,7 +15,6 @@ class BankAccountTest {
         @Test
         @DisplayName("ctor with provided balance")
         void ctor_1() {
-            //final Money testBalance = new Money(100, 50);
             final BankAccount CuT = new BankAccount(new Money(100, 50));
             assertAll("ctor_1 assertions"
                 , () -> assertNotNull(CuT)
@@ -41,5 +40,12 @@ class BankAccountTest {
                 , () -> assertEquals(0, CuT.money.dollars(), "Dollar value is stored correctly")
                 , () -> assertEquals(0, CuT.money.cents(), "Cents value is stored correctly")
             );
+        }
+
+        @Test
+        @DisplayName("return the current balance")
+        void balance_1() {
+            final BankAccount CuT = new BankAccount(new Money(75, 23));
+            assertEquals(CuT.getBalance(), CuT.money);
         }
 }
