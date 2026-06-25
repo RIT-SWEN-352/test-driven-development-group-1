@@ -32,5 +32,10 @@ class BankAccountTest {
             assertEquals("Balance cannot be negative.", e.getMessage());
         }
 
-        
+        @Test
+        @DisplayName("ctor with no balance")
+        void ctor_2() {
+            final BankAccount CuT = new BankAccount();
+            assertNotNull(CuT);
+        }
 }
