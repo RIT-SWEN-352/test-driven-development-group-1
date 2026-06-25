@@ -40,4 +40,9 @@ public class Temperature {
   public Temperature(double value) {
     this(value, TemperatureUnit.FAHRENHEIT);
   }
+
+  public double getValue() {
+    assert false : "Not yet implimented";
+    return 0;
+  }
 }
