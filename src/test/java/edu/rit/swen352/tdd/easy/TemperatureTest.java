@@ -51,6 +51,9 @@ class TemperatureTest {
 
         final Temperature CuT_4 = new Temperature(-10.4, TemperatureUnit.KELVIN);
         assertEquals(-283.55, CuT_4.convertTo(TemperatureUnit.CELSIUS));
+
+        final Temperature CuT_5 = new Temperature(90, TemperatureUnit.CELSIUS);
+        assertEquals(90, CuT_5.convertTo(TemperatureUnit.CELSIUS));
     }
 
     @Test
@@ -67,6 +70,9 @@ class TemperatureTest {
 
         final Temperature CuT_4 = new Temperature(0, TemperatureUnit.KELVIN);
         assertEquals(-459.67, CuT_4.convertTo(TemperatureUnit.FAHRENHEIT));
+
+        final Temperature CuT_5 = new Temperature(0, TemperatureUnit.FAHRENHEIT);
+        assertEquals(0, CuT_5.convertTo(TemperatureUnit.FAHRENHEIT));
     }
 
     @Test
@@ -83,6 +89,11 @@ class TemperatureTest {
 
         final Temperature CuT_4 = new Temperature(12223, TemperatureUnit.FAHRENHEIT);
         assertEquals(7045.928, CuT_4.convertTo(TemperatureUnit.KELVIN));
+
+        final Temperature CuT_5 = new Temperature(45, TemperatureUnit.KELVIN);
+        assertEquals(45, CuT_5.convertTo(TemperatureUnit.KELVIN));
     }
+
+    
   }
 
