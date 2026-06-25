@@ -21,7 +21,7 @@ class TemperatureTest {
         assertAll("ctor_1 assertions"
             , () -> assertNotNull(CuT)
             , () -> assertEquals(0, CuT.getValue(), "Value is correct")
-            , () -> assertEquals(TemperatureUnit.KELVIN, CuT.unit, "Unit is correct")
+            , () -> assertEquals(TemperatureUnit.KELVIN, CuT.getUnit(), "Unit is correct")
         );
         
     }
@@ -33,7 +33,7 @@ class TemperatureTest {
         assertAll("ctor_2 assertions"
             , () -> assertNotNull(CuT)
             , () -> assertEquals(0, CuT.getValue(), "Value is correct")
-            , () -> assertEquals(TemperatureUnit.FAHRENHEIT, CuT.unit, "Unit is correct")
+            , () -> assertEquals(TemperatureUnit.FAHRENHEIT, CuT.getUnit(), "Unit is correct")
         );
     }
 
