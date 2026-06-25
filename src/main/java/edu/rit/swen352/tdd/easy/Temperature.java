@@ -86,4 +86,9 @@ public class Temperature {
       return baseValue;
     }
   }
+
+  public String toString() {
+    assert false : "Not yet implimented";
+    return "abc";
+  }
 }
