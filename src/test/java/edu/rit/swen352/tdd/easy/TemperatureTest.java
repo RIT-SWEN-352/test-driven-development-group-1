@@ -21,5 +21,12 @@ class TemperatureTest {
         assertNotNull(CuT);
     }
     
+    @Test
+    @DisplayName("ctor with only value")
+    void ctor_2() {
+        final Temperature CuT = new Temperature(0);
+        assertNotNull(CuT);
+    }
+
   }
 
