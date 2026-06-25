@@ -2,6 +2,8 @@ package edu.rit.swen352.tdd.hard;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import edu.rit.swen352.tdd.sample.Counter;
 
@@ -12,17 +14,18 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class BankAccountTest {
 
-        @Test
+        @ParameterizedTest(name = "Test dollars={0}, cents={1}")
+        @CsvSource({"100, 50", "45, 35", "0, 80"})
         @DisplayName("ctor with provided balance")
-        void ctor_1() {
-            final BankAccount CuT = new BankAccount(new Money(100, 50));
+        void ctor_1(int dollars, int cents) {
+            final BankAccount CuT = new BankAccount(new Money(dollars, cents));
             assertAll("ctor_1 assertions"
                 , () -> assertNotNull(CuT)
-                , () -> assertEquals(100, CuT.money.dollars(), "Dollar value is stored correctly")
-                , () -> assertEquals(50, CuT.money.cents(), "Cents value is stored correctly")
+                , () -> assertEquals(dollars, CuT.money.dollars(), "Money is correct")
+                , () -> assertEquals(cents, CuT.money.cents(), "Money is correct")
             );
         }
-
+        
         @Test
         @DisplayName("ctor rejects negative input")
         void ctor_1_fail() {
