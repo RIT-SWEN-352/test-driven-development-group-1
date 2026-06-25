@@ -42,7 +42,6 @@ public class Temperature {
   }
 
   public double getValue() {
-    assert false : "Not yet implimented";
-    return 0;
+    return value;
   }
 }
