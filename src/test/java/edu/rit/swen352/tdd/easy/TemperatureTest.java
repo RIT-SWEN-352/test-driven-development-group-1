@@ -37,5 +37,12 @@ class TemperatureTest {
         );
     }
 
+    @Test
+    @DisplayName("convert to new temperature unit")
+    void convert_1() {
+        final Temperature CuT = new Temperature(32, TemperatureUnit.FAHRENHEIT);
+        CuT.convertTo(TemperatureUnit.CELSIUS);
+        assertEquals(0, CuT.getValue());
+    }
   }
 
