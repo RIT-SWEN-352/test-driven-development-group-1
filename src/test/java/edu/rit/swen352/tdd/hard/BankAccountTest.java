@@ -36,6 +36,10 @@ class BankAccountTest {
         @DisplayName("ctor with default balance")
         void ctor_2() {
             final BankAccount CuT = new BankAccount();
-            assertNotNull(CuT);
+            assertAll("ctor_2 assertions"
+                , () -> assertNotNull(CuT)
+                , () -> assertEquals(0, CuT.money.dollars(), "Dollar value is stored correctly")
+                , () -> assertEquals(0, CuT.money.cents(), "Cents value is stored correctly")
+            );
         }
 }
