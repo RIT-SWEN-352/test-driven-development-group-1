@@ -10,4 +10,10 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class BankAccountTest {
 
+        @Test
+        @DisplayName("ctor with provided balance")
+        void ctor_1() {
+            final BankAccount CuT = new BankAccount(100, 50);
+            assertNotNull(CuT);
+        }
 }

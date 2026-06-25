@@ -29,4 +29,7 @@ record Money() {}
  */
 public class BankAccount {
 
+    public BankAccount(int dollars, int cents) {
+        assert false : "Not yet implimented";
+    }
 }
