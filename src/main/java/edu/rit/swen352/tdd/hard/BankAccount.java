@@ -33,6 +33,10 @@ public class BankAccount {
     final int cents;
 
     public BankAccount(int dollars, int cents) {
+        if(dollars < 0 || cents < 0)
+        {
+            throw new IllegalArgumentException("Balance cannot be negative.");
+        }
         this.dollars = dollars;
         this.cents = cents;
     }
