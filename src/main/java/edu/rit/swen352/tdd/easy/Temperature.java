@@ -47,7 +47,6 @@ public class Temperature {
 
   public TemperatureUnit getUnit()
   {
-    assert false : "Not yet implimented";
-    return TemperatureUnit.CELSIUS;
+    return unit;
   }
 }
