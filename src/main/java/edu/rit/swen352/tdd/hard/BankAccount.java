@@ -45,8 +45,6 @@ public class BankAccount {
     }
 
     public Money getBalance() {
-        assert false : "Not yet implimented";
-
         return this.money;
     }
 }
