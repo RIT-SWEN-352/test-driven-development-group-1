@@ -29,8 +29,8 @@ record Money() {}
  */
 public class BankAccount {
 
-    private final int dollars;
-    private final int cents;
+    final int dollars;
+    final int cents;
 
     public BankAccount(int dollars, int cents) {
         this.dollars = dollars;

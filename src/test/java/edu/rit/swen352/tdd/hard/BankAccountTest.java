@@ -14,6 +14,12 @@ class BankAccountTest {
         @DisplayName("ctor with provided balance")
         void ctor_1() {
             final BankAccount CuT = new BankAccount(100, 50);
-            assertNotNull(CuT);
+            assertAll("ctor_1 assertions"
+                , () -> assertNotNull(CuT)
+                , () -> assertEquals(100, CuT.dollars, "Dollar value is stored correctly")
+                , () -> assertEquals(50, CuT.cents, "Cents value is stored correctly")
+            );
         }
+
+        
 }
