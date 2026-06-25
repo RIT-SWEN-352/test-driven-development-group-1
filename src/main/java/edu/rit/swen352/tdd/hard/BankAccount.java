@@ -42,6 +42,5 @@ public class BankAccount {
 
     public BankAccount() {
         this(new Money(0, 0));
-        assert false : "Not yet implimented";
     }
 }

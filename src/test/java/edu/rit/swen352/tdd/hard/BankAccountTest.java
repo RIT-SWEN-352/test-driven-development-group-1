@@ -33,7 +33,7 @@ class BankAccountTest {
         }
 
         @Test
-        @DisplayName("ctor with no balance")
+        @DisplayName("ctor with default balance")
         void ctor_2() {
             final BankAccount CuT = new BankAccount();
             assertNotNull(CuT);
