@@ -60,23 +60,30 @@ public class Temperature {
 
       case TemperatureUnit.FAHRENHEIT:
         baseValue = (baseValue - 32) / 1.8;
+        baseValue = (double)Math.round(baseValue * 1000d) / 1000d;
         break;
 
       case TemperatureUnit.KELVIN:
         baseValue = (baseValue - 273.15);
+        baseValue = (double)Math.round(baseValue * 1000d) / 1000d;
         break;
     }
   
     // convert to indicated unit
     switch(unit) {
       case TemperatureUnit.FAHRENHEIT:
-        return (baseValue * 1.8) + 32;
+        baseValue = (baseValue * 1.8) + 32;
+        baseValue = (double)Math.round(baseValue * 1000d) / 1000d;
+        return baseValue;
 
       case TemperatureUnit.KELVIN:
-        return baseValue + 273.15;
+        baseValue += 273.15;
+        baseValue = (double)Math.round(baseValue * 1000d) / 1000d;
+        return baseValue;
 
       default: // CELSIUS
-        return baseValue;
+      baseValue = (double)Math.round(baseValue * 1000d) / 1000d;  
+      return baseValue;
     }
   }
 }

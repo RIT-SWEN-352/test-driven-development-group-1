@@ -38,11 +38,51 @@ class TemperatureTest {
     }
 
     @Test
-    @DisplayName("convert to new temperature unit")
+    @DisplayName("convert to CELSIUS temperature unit")
     void convert_1() {
-        final Temperature CuT = new Temperature(32, TemperatureUnit.FAHRENHEIT);
-        CuT.convertTo(TemperatureUnit.CELSIUS);
-        assertEquals(0, CuT.convertTo(TemperatureUnit.CELSIUS));
+        final Temperature CuT_1 = new Temperature(32, TemperatureUnit.FAHRENHEIT);
+        assertEquals(0, CuT_1.convertTo(TemperatureUnit.CELSIUS));
+
+        final Temperature CuT_2 = new Temperature(0, TemperatureUnit.FAHRENHEIT);
+        assertEquals(-17.778, CuT_2.convertTo(TemperatureUnit.CELSIUS));
+
+        final Temperature CuT_3 = new Temperature(2322, TemperatureUnit.KELVIN);
+        assertEquals(2048.85, CuT_3.convertTo(TemperatureUnit.CELSIUS));
+
+        final Temperature CuT_4 = new Temperature(-10.4, TemperatureUnit.KELVIN);
+        assertEquals(-283.55, CuT_4.convertTo(TemperatureUnit.CELSIUS));
+    }
+
+    @Test
+    @DisplayName("convert to FAHRENHEIT temperature unit")
+    void convert_2() {
+        final Temperature CuT_1 = new Temperature(43, TemperatureUnit.CELSIUS);
+        assertEquals(109.40, CuT_1.convertTo(TemperatureUnit.FAHRENHEIT));
+
+        final Temperature CuT_2 = new Temperature(-89, TemperatureUnit.CELSIUS);
+        assertEquals(-128.20, CuT_2.convertTo(TemperatureUnit.FAHRENHEIT));
+
+        final Temperature CuT_3 = new Temperature(14, TemperatureUnit.KELVIN);
+        assertEquals(-434.47, CuT_3.convertTo(TemperatureUnit.FAHRENHEIT));
+
+        final Temperature CuT_4 = new Temperature(0, TemperatureUnit.KELVIN);
+        assertEquals(-459.67, CuT_4.convertTo(TemperatureUnit.FAHRENHEIT));
+    }
+
+    @Test
+    @DisplayName("convert to KELVIN temperature unit")
+    void convert_3() {
+        final Temperature CuT_1 = new Temperature(20, TemperatureUnit.CELSIUS);
+        assertEquals(293.15, CuT_1.convertTo(TemperatureUnit.KELVIN));
+
+        final Temperature CuT_2 = new Temperature(1, TemperatureUnit.CELSIUS);
+        assertEquals(274.15, CuT_2.convertTo(TemperatureUnit.KELVIN));
+
+        final Temperature CuT_3 = new Temperature(32, TemperatureUnit.FAHRENHEIT);
+        assertEquals(273.15, CuT_3.convertTo(TemperatureUnit.KELVIN));
+
+        final Temperature CuT_4 = new Temperature(12223, TemperatureUnit.FAHRENHEIT);
+        assertEquals(7045.928, CuT_4.convertTo(TemperatureUnit.KELVIN));
     }
   }
 
