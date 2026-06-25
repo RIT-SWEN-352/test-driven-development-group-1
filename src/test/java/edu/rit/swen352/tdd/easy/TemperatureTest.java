@@ -17,15 +17,24 @@ class TemperatureTest {
     @Test
     @DisplayName("ctor with both values")
     void ctor_1() {
-        final Temperature CuT = new Temperature(0, TemperatureUnit.FAHRENHEIT);
-        assertNotNull(CuT);
+        final Temperature CuT = new Temperature(0, TemperatureUnit.KELVIN);
+        assertAll("ctor_1 assertions"
+            , () -> assertNotNull(CuT)
+            , () -> assertEquals(0, CuT.value, "Value is correct")
+            , () -> assertEquals(TemperatureUnit.KELVIN, CuT.unit, "Unit is correct")
+        );
+        
     }
     
     @Test
     @DisplayName("ctor with only value")
     void ctor_2() {
         final Temperature CuT = new Temperature(0);
-        assertNotNull(CuT);
+        assertAll("ctor_2 assertions"
+            , () -> assertNotNull(CuT)
+            , () -> assertEquals(0, CuT.value, "Value is correct")
+            , () -> assertEquals(TemperatureUnit.FAHRENHEIT, CuT.unit, "Unit is correct")
+        );
     }
 
   }

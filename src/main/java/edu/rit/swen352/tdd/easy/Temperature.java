@@ -29,7 +29,12 @@ public class Temperature {
     CELSIUS, FAHRENHEIT, KELVIN
   }
 
+  final double value;
+  final TemperatureUnit unit;
+
   public Temperature(double value, TemperatureUnit unit) {
+    this.value = value;
+    this.unit = unit;
   }
 
   public Temperature(double value) {
