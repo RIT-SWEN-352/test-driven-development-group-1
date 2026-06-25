@@ -15,12 +15,12 @@ class BankAccountTest {
         @Test
         @DisplayName("ctor with provided balance")
         void ctor_1() {
-            final Money testBalance = new Money(100, 50);
-            final BankAccount CuT = new BankAccount(testBalance);
+            //final Money testBalance = new Money(100, 50);
+            final BankAccount CuT = new BankAccount(new Money(100, 50));
             assertAll("ctor_1 assertions"
                 , () -> assertNotNull(CuT)
-                , () -> assertEquals(100, testBalance.dollars(), "Dollar value is stored correctly")
-                , () -> assertEquals(50, testBalance.cents(), "Cents value is stored correctly")
+                , () -> assertEquals(100, CuT.money.dollars(), "Dollar value is stored correctly")
+                , () -> assertEquals(50, CuT.money.cents(), "Cents value is stored correctly")
             );
         }
 
