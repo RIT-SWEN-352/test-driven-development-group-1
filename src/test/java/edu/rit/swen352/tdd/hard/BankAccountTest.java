@@ -3,6 +3,8 @@ package edu.rit.swen352.tdd.hard;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import edu.rit.swen352.tdd.sample.Counter;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -19,6 +21,13 @@ class BankAccountTest {
                 , () -> assertEquals(100, CuT.dollars, "Dollar value is stored correctly")
                 , () -> assertEquals(50, CuT.cents, "Cents value is stored correctly")
             );
+        }
+
+        @Test
+        @DisplayName("ctor rejects negative input")
+        void ctor_1_fail() {
+            final Exception e = assertThrows(IllegalArgumentException.class, () -> new BankAccount(-25, 35));
+            assertEquals("Balance cannot be negative.", e.getMessage());
         }
 
         
