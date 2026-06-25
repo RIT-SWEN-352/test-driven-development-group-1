@@ -97,8 +97,14 @@ class TemperatureTest {
     @Test
     @DisplayName("create human-friendly text")
     void toString_1() {
-        final Temperature CuT = new Temperature(0, TemperatureUnit.CELSIUS);
-        assertEquals("0°C", CuT.toString());
+        final Temperature CuT_1 = new Temperature(0, TemperatureUnit.CELSIUS);
+        assertEquals("0.0°C", CuT_1.toString());
+
+        final Temperature CuT_2 = new Temperature(23, TemperatureUnit.FAHRENHEIT);
+        assertEquals("23.0°F", CuT_2.toString());
+
+        final Temperature CuT_3 = new Temperature(23.3232, TemperatureUnit.KELVIN);
+        assertEquals("23.3°K", CuT_3.toString());
     }
   }
 

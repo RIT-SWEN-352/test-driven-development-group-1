@@ -55,9 +55,6 @@ public class Temperature {
     
     // convert to celsius
     switch(this.getUnit()) {
-      case TemperatureUnit.CELSIUS:
-        break;
-
       case TemperatureUnit.FAHRENHEIT:
         baseValue = (baseValue - 32) / 1.8;
         baseValue = (double)Math.round(baseValue * 1000d) / 1000d;
@@ -66,6 +63,9 @@ public class Temperature {
       case TemperatureUnit.KELVIN:
         baseValue = (baseValue - 273.15);
         baseValue = (double)Math.round(baseValue * 1000d) / 1000d;
+        break;
+
+      default: // CELSIUS
         break;
     }
   
@@ -88,7 +88,15 @@ public class Temperature {
   }
 
   public String toString() {
-    assert false : "Not yet implimented";
-    return "abc";
+    switch(this.getUnit()) {
+      case TemperatureUnit.FAHRENHEIT:
+        return String.format("%.1f°F", this.getValue());
+
+      case TemperatureUnit.KELVIN:
+          return String.format("%.1f°K", this.getValue());
+
+      default: // CELSIUS
+        return String.format("%.1f°C", this.getValue());
+    }
   }
 }
