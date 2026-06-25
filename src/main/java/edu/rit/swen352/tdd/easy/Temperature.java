@@ -51,7 +51,32 @@ public class Temperature {
   }
 
   public double convertTo(TemperatureUnit unit) {
-    assert false : "Not yet implemented";
-    return -1;
+    double baseValue = this.getValue();
+    
+    // convert to celsius
+    switch(this.getUnit()) {
+      case TemperatureUnit.CELSIUS:
+        break;
+
+      case TemperatureUnit.FAHRENHEIT:
+        baseValue = (baseValue - 32) / 1.8;
+        break;
+
+      case TemperatureUnit.KELVIN:
+        baseValue = (baseValue - 273.15);
+        break;
+    }
+  
+    // convert to indicated unit
+    switch(unit) {
+      case TemperatureUnit.FAHRENHEIT:
+        return (baseValue * 1.8) + 32;
+
+      case TemperatureUnit.KELVIN:
+        return baseValue + 273.15;
+
+      default: // CELSIUS
+        return baseValue;
+    }
   }
 }

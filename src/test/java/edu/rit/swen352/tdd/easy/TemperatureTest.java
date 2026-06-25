@@ -42,7 +42,7 @@ class TemperatureTest {
     void convert_1() {
         final Temperature CuT = new Temperature(32, TemperatureUnit.FAHRENHEIT);
         CuT.convertTo(TemperatureUnit.CELSIUS);
-        assertEquals(0, CuT.getValue());
+        assertEquals(0, CuT.convertTo(TemperatureUnit.CELSIUS));
     }
   }
 
