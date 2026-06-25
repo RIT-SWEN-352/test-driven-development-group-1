@@ -4,7 +4,7 @@ package edu.rit.swen352.tdd.hard;
  * A Value Object for American monetary values with fixed integer
  * values for dollars and cents.
  */
-record Money() {}
+record Money(int dollars, int cents) {}
 
 /**
  * An American bank account that permits deposits and withdrawals.
@@ -29,15 +29,14 @@ record Money() {}
  */
 public class BankAccount {
 
-    final int dollars;
-    final int cents;
+    final Money money;
 
-    public BankAccount(int dollars, int cents) {
-        if(dollars < 0 || cents < 0)
+    public BankAccount(Money money) {
+        if(money.dollars() < 0 || money.cents() < 0)
         {
             throw new IllegalArgumentException("Balance cannot be negative.");
         }
-        this.dollars = dollars;
-        this.cents = cents;
+        
+        this.money = money;
     }
 }
