@@ -61,13 +61,15 @@ public class MyOptional<T> {
     }
 
     public static <T> MyOptional<T> ofNullable(){
-        assert false: "NYI";
-        return null;
+        return MyOptional.empty();
     }
 
     public static <T> MyOptional<T> ofNullable(T val){
-        assert false: "NYI";
-        return null;
+        if(val==null){
+            return MyOptional.empty();
+        }else{
+            return MyOptional.of(val);
+        }
     }
 
 }
