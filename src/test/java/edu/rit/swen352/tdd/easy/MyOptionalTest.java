@@ -23,14 +23,17 @@ class MyOptionalTest {
     @Nested
     class factories{
 
+        String objectNotCreated =  "Object was not created";
+        String objectNotEmpty = "Object is not empty";
+
         @Test
         @DisplayName("empty")
         void empty_factory(){
             final MyOptional<String> x = MyOptional.empty();
 
             assertAll(
-                ()-> assertNotNull(x,"Object was not created"), //Was it created?
-                ()-> assertNull(x.value, "Object is not empty") //Is the object empty
+                ()-> assertNotNull(x,objectNotCreated), //Was it created?
+                ()-> assertNull(x.value, objectNotEmpty) //Is the object empty
             );
         }  
 
@@ -43,16 +46,16 @@ class MyOptionalTest {
             void valid_value(){
                 final MyOptional<String> x = MyOptional.of(testVal);
                 assertAll(
-                    ()->assertNotNull(x),
-                    ()->assertEquals(testVal, x.value)
+                    ()->assertNotNull(x,objectNotCreated),
+                    ()->assertEquals(testVal, x.value, "Value was not set correctly")
                 );
             }
 
             @Test
             @DisplayName("passed invalid value (null)")
             void invalid_value(){
-                Exception exc = assertThrows(InvalidParameterException.class, ()->MyOptional.of(null));
-                assertEquals("Value cannot be null", exc.getMessage());
+                Exception exc = assertThrows(InvalidParameterException.class, ()->MyOptional.of(null),"Null values should throw an invalid parameter exception");
+                assertEquals(MyOptional.nullParamMsg, exc.getMessage(),"InvalidParameterException message was not the correct message");
             }
 
         }
@@ -66,18 +69,28 @@ class MyOptionalTest {
             void valid_value(){
                 final MyOptional<String> x = MyOptional.ofNullable(testVal);
                 assertAll(
-                    ()->assertNotNull(x),
+                    ()->assertNotNull(x, objectNotCreated),
                     ()->assertEquals(testVal, x.value)
                 );
             }
 
             @Test
+            @DisplayName("passed null value (empty)")
+            void null_value(){
+                final MyOptional<String> x = MyOptional.ofNullable(null);
+                assertAll(
+                    ()->assertNotNull(x,objectNotCreated),
+                    ()->assertNull(x.value, objectNotEmpty)
+                );
+            }
+
+            @Test
             @DisplayName("passed no value (empty)")
-            void invalid_value(){
+            void empty_value(){
                 final MyOptional<String> x = MyOptional.ofNullable();
                 assertAll(
-                ()-> assertNotNull(x,"Object was not created"), //Was it created?
-                ()-> assertNull(x.value, "Object is not empty") //Is the object empty
+                ()-> assertNotNull(x,objectNotCreated), //Was it created?
+                ()-> assertNull(x.value, objectNotEmpty) //Is the object empty
                 );
             }
 

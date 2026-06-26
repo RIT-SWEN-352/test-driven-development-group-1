@@ -40,6 +40,7 @@ import java.security.InvalidParameterException;
 public class MyOptional<T> {
 
     T value;
+    static final String nullParamMsg = "Value cannot be null";
 
     private MyOptional(){
         value = null;
@@ -55,7 +56,7 @@ public class MyOptional<T> {
 
     public static <T> MyOptional<T> of(T val){
         if(val==null){
-            throw new InvalidParameterException("Value cannot be null");
+            throw new InvalidParameterException(nullParamMsg);
         }
         return new MyOptional<T>(val);
     }
