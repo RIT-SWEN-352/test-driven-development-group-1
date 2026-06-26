@@ -36,4 +36,16 @@ package edu.rit.swen352.tdd.easy;
  * @param <T> the type of value.
  */
 public class MyOptional<T> {
+
+    T value;
+
+    private MyOptional(){
+        assert false: "NYI";
+    }
+
+    public static <T> MyOptional<T> empty(){
+        assert false: "NYI";
+        return null;
+    }
+
 }
