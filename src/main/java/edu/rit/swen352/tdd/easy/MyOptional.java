@@ -40,12 +40,11 @@ public class MyOptional<T> {
     T value;
 
     private MyOptional(){
-        assert false: "NYI";
+        value = null;
     }
 
     public static <T> MyOptional<T> empty(){
-        assert false: "NYI";
-        return null;
+        return new MyOptional<T>();
     }
 
 }
