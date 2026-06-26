@@ -33,6 +33,22 @@ class MyOptionalTest {
             );
         }  
 
+        @Nested
+        @DisplayName("of")
+        class of{
+
+            @Test
+            @DisplayName("passed valid value")
+            void valid_value(){
+                x = MyOptional.of(testVal);
+                assertAll(
+                    ()->assertNotNull(x),
+                    ()->assertEquals(testVal, x.value)
+                );
+            }
+
+        }
+
     }
 
 }
