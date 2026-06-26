@@ -57,6 +57,32 @@ class MyOptionalTest {
 
         }
 
+        @Nested
+        @DisplayName("ofNullable")
+        class ofNullable{ 
+
+            @Test
+            @DisplayName("passed value (of)")
+            void valid_value(){
+                final MyOptional<String> x = MyOptional.ofNullable(testVal);
+                assertAll(
+                    ()->assertNotNull(x),
+                    ()->assertEquals(testVal, x.value)
+                );
+            }
+
+            @Test
+            @DisplayName("passed no value (empty)")
+            void invalid_value(){
+                final MyOptional<String> x = MyOptional.ofNullable();
+                assertAll(
+                ()-> assertNotNull(x,"Object was not created"), //Was it created?
+                ()-> assertNull(x.value, "Object is not empty") //Is the object empty
+                );
+            }
+
+        }
+
     }
 
 }

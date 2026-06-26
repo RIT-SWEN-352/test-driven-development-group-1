@@ -60,7 +60,14 @@ public class MyOptional<T> {
         return new MyOptional<T>(val);
     }
 
+    public static <T> MyOptional<T> ofNullable(){
+        assert false: "NYI";
+        return null;
+    }
 
-
+    public static <T> MyOptional<T> ofNullable(T val){
+        assert false: "NYI";
+        return null;
+    }
 
 }
