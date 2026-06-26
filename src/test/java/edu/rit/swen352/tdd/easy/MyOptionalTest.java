@@ -35,7 +35,7 @@ class MyOptionalTest {
 
         @Nested
         @DisplayName("of")
-        class of{
+        class of{ 
 
             @Test
             @DisplayName("passed valid value")

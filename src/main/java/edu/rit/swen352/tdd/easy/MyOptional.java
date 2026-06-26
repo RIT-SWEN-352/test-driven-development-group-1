@@ -43,15 +43,16 @@ public class MyOptional<T> {
         value = null;
     }
 
-    private MyOptional(T value){    
+    private MyOptional(T value){   
+        this.value=value; 
     }
 
     public static <T> MyOptional<T> empty(){
         return new MyOptional<T>();
     }
 
-    public static <T> MyOptional<T> of(String val){
-        return null;
+    public static <T> MyOptional<T> of(T val){
+        return new MyOptional<T>(val);
     }
 
 
