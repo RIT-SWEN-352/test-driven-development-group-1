@@ -28,4 +28,75 @@ public class Temperature {
   public enum TemperatureUnit {
     CELSIUS, FAHRENHEIT, KELVIN
   }
+
+  final double value;
+  final TemperatureUnit unit;
+
+  public Temperature(double value, TemperatureUnit unit) {
+    this.value = value;
+    this.unit = unit;
+  }
+
+  public Temperature(double value) {
+    this(value, TemperatureUnit.FAHRENHEIT);
+  }
+
+  public double getValue() {
+    return value;
+  }
+
+  public TemperatureUnit getUnit()
+  {
+    return unit;
+  }
+
+  public double convertTo(TemperatureUnit unit) {
+    double baseValue = this.getValue();
+    
+    // convert to celsius
+    switch(this.getUnit()) {
+      case TemperatureUnit.FAHRENHEIT:
+        baseValue = (baseValue - 32) / 1.8;
+        baseValue = (double)Math.round(baseValue * 1000d) / 1000d;
+        break;
+
+      case TemperatureUnit.KELVIN:
+        baseValue = (baseValue - 273.15);
+        baseValue = (double)Math.round(baseValue * 1000d) / 1000d;
+        break;
+
+      default: // CELSIUS
+        break;
+    }
+  
+    // convert to indicated unit
+    switch(unit) {
+      case TemperatureUnit.FAHRENHEIT:
+        baseValue = (baseValue * 1.8) + 32;
+        baseValue = (double)Math.round(baseValue * 1000d) / 1000d;
+        return baseValue;
+
+      case TemperatureUnit.KELVIN:
+        baseValue += 273.15;
+        baseValue = (double)Math.round(baseValue * 1000d) / 1000d;
+        return baseValue;
+
+      default: // CELSIUS
+      baseValue = (double)Math.round(baseValue * 1000d) / 1000d;  
+      return baseValue;
+    }
+  }
+
+  public String toString() {
+    switch(this.getUnit()) {
+      case TemperatureUnit.FAHRENHEIT:
+        return String.format("%.1f°F", this.getValue());
+
+      case TemperatureUnit.KELVIN:
+          return String.format("%.1f°K", this.getValue());
+
+      default: // CELSIUS
+        return String.format("%.1f°C", this.getValue());
+    }
+  }
 }
