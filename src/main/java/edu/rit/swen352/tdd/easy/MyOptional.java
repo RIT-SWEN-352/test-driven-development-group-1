@@ -1,5 +1,7 @@
 package edu.rit.swen352.tdd.easy;
 
+import java.security.InvalidParameterException;
+
 /**
  * MyOptional contains a single value, of any type, or nothing at all.
  *
@@ -52,6 +54,9 @@ public class MyOptional<T> {
     }
 
     public static <T> MyOptional<T> of(T val){
+        if(val==null){
+            throw new InvalidParameterException("Value cannot be null");
+        }
         return new MyOptional<T>(val);
     }
 

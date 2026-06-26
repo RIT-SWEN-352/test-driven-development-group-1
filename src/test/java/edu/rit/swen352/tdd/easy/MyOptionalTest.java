@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.security.InvalidParameterException;
 import java.util.function.Consumer;
 
 
@@ -25,7 +26,7 @@ class MyOptionalTest {
         @Test
         @DisplayName("empty")
         void empty_factory(){
-            x = MyOptional.empty();
+            final MyOptional<String> x = MyOptional.empty();
 
             assertAll(
                 ()-> assertNotNull(x,"Object was not created"), //Was it created?
@@ -40,11 +41,18 @@ class MyOptionalTest {
             @Test
             @DisplayName("passed valid value")
             void valid_value(){
-                x = MyOptional.of(testVal);
+                final MyOptional<String> x = MyOptional.of(testVal);
                 assertAll(
                     ()->assertNotNull(x),
                     ()->assertEquals(testVal, x.value)
                 );
+            }
+
+            @Test
+            @DisplayName("passed invalid value (null)")
+            void invalid_value(){
+                Exception exc = assertThrows(InvalidParameterException.class, ()->MyOptional.of(null));
+                assertEquals("Value cannot be null", exc.getMessage());
             }
 
         }
