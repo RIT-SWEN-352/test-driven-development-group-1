@@ -104,7 +104,7 @@ class BankAccountTest {
                 , () -> assertEquals(30, CuT.money.cents(), "Cents is correct")
             );
         }
-        
+
         @Test
         @DisplayName("attempt to add negative balance to account")
         void deposit_fail() {
@@ -116,5 +116,17 @@ class BankAccountTest {
                 , () -> assertEquals(CuT.getBalance().dollars(), 0)
                 , () -> assertEquals(CuT.getBalance().cents(), 0)
             );            
+        }
+
+        @ParameterizedTest(name = "Test dollars={0}, cents={1}")
+        @CsvSource({"100, 50", "45, 35", "0, 80"})
+        @DisplayName("add balance to account, under 100 cents")
+        void withdraw_1(int dollars, int cents) {
+            final BankAccount CuT = new BankAccount(new Money(100, 80));
+            CuT.withdraw(new Money(dollars, cents));
+            assertAll("withdraw assertions"
+                , () -> assertEquals((100 - dollars), CuT.money.dollars(), "Dollars is correct")
+                , () -> assertEquals((80 - cents), CuT.money.cents(), "Cents is correct")
+            );
         }
 }
