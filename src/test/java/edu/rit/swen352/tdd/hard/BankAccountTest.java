@@ -27,9 +27,17 @@ class BankAccountTest {
         }
         
         @Test
-        @DisplayName("ctor rejects negative input")
-        void ctor_1_fail() {
+        @DisplayName("ctor rejects negative dollars")
+        void ctor_1_fail_1() {
             final Money testBalance = new Money (-25, 35);
+            final Exception e = assertThrows(IllegalArgumentException.class, () -> new BankAccount(testBalance));
+            assertEquals("Balance cannot be negative.", e.getMessage());
+        }
+
+        @Test
+        @DisplayName("ctor rejects negative cents")
+        void ctor_1_fail_2() {
+            final Money testBalance = new Money (25, -35);
             final Exception e = assertThrows(IllegalArgumentException.class, () -> new BankAccount(testBalance));
             assertEquals("Balance cannot be negative.", e.getMessage());
         }
