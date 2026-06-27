@@ -3,6 +3,7 @@ package edu.rit.swen352.tdd.easy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -104,6 +105,9 @@ class MyOptionalTest {
     @DisplayName("non-static functions")
     class non_static{
 
+        String Z = "Z";
+        Consumer<String> changeZtoA = changeTo -> Z=changeTo;
+
         @Nested
         @DisplayName("on empty optional: ")
         class empty{
@@ -149,6 +153,14 @@ class MyOptionalTest {
             void get(){
                 String boj = assertDoesNotThrow(()->x.get(),"get should not throw an exception for a non-empty optional");
                 assertEquals(testVal, boj,"get returned incorrect value");
+            }
+
+            @Test
+            @DisplayName("ifPresent")
+            @Tag("usesConsumer")
+            void ifPresent(){
+                x.ifPresent(changeZtoA);
+                assertEquals(testVal, x.value);
             }
         }
     }
