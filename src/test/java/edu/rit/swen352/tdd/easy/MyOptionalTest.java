@@ -143,6 +143,13 @@ class MyOptionalTest {
                 boolean pres = x.isPresent();
                 assertTrue(pres,"Optional with value returns false");
             }
+
+            @Test
+            @DisplayName("get")
+            void get(){
+                String boj = assertDoesNotThrow(()->x.get(),"get should not throw an exception for a non-empty optional");
+                assertEquals(testVal, boj,"get returned incorrect value");
+            }
         }
     }
 

@@ -81,8 +81,7 @@ public class MyOptional<T> {
     }
 
     T get() throws NoSuchElementException{
-        assert false: "NYI";
-        return null;
+        throw new NoSuchElementException(noSuchElem);
     }
 
     void ifPresent(Consumer<T> cons){
