@@ -87,6 +87,24 @@ public class BankAccount {
     }
 
     public void withdraw(Money withdrawMoney) {
-        assert false : "Not yet implemented";
+        // check for negative withdraw amount
+        if(withdrawMoney.dollars() < 0 || withdrawMoney.cents() < 0) {
+            throw new IllegalArgumentException("Withdraw amount cannot be negative.");
+        }
+
+        // subtract dollars
+        int dollars = this.getBalance().dollars();
+        dollars -= withdrawMoney.dollars();
+
+        // substract cents
+        int cents = this.getBalance().cents();
+        cents -= withdrawMoney.cents();
+        // check if cents will push into new dollar
+        if(cents < 0) {
+            dollars--;
+            cents = 100 - withdrawMoney.cents();
+        }
+
+        this.money = new Money(dollars, cents);
     }
 }
