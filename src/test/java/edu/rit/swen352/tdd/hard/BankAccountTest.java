@@ -27,8 +27,16 @@ class BankAccountTest {
         }
         
         @Test
-        @DisplayName("ctor rejects negative dollars")
+        @DisplayName("ctor rejects cents over 100")
         void ctor_1_fail_1() {
+            final Money testBalance = new Money(15, 105);
+            final Exception e = assertThrows(IllegalArgumentException.class, () -> new BankAccount(testBalance));
+            assertEquals("Cents count must be under 100.", e.getMessage());
+        }
+
+        @Test
+        @DisplayName("ctor rejects negative dollars")
+        void ctor_1_fail_2() {
             final Money testBalance = new Money (-25, 35);
             final Exception e = assertThrows(IllegalArgumentException.class, () -> new BankAccount(testBalance));
             assertEquals("Balance cannot be negative.", e.getMessage());
@@ -36,7 +44,7 @@ class BankAccountTest {
 
         @Test
         @DisplayName("ctor rejects negative cents")
-        void ctor_1_fail_2() {
+        void ctor_1_fail_3() {
             final Money testBalance = new Money (25, -35);
             final Exception e = assertThrows(IllegalArgumentException.class, () -> new BankAccount(testBalance));
             assertEquals("Balance cannot be negative.", e.getMessage());
@@ -59,4 +67,6 @@ class BankAccountTest {
             final BankAccount CuT = new BankAccount(new Money(75, 23));
             assertEquals(CuT.getBalance(), CuT.money);
         }
+
+        // add test to ensure cents over 100 aren't added
 }

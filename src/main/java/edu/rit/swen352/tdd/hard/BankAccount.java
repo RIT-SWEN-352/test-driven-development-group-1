@@ -32,9 +32,12 @@ public class BankAccount {
     final Money money;
 
     public BankAccount(Money money) {
-        if(money.dollars() < 0 || money.cents() < 0)
-        {
+        if(money.dollars() < 0 || money.cents() < 0) {
             throw new IllegalArgumentException("Balance cannot be negative.");
+        }
+        
+        if(money.cents() >= 100) {
+            throw new IllegalArgumentException("Cents count must be under 100.");
         }
         
         this.money = money;
