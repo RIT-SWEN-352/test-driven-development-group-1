@@ -84,8 +84,8 @@ class BankAccountTest {
 
         @ParameterizedTest(name = "Test dollars={0}, cents={1}")
         @CsvSource({"100, 50", "45, 35", "0, 80"})
-        @DisplayName("add balance to account")
-        void deposit(int dollars, int cents) {
+        @DisplayName("add balance to account, under 100 cents")
+        void deposit_1(int dollars, int cents) {
             final BankAccount CuT = new BankAccount();
             CuT.deposit(new Money(dollars, cents));
             assertAll("deposit assertions"
@@ -94,6 +94,17 @@ class BankAccountTest {
             );
         }
 
+        @Test
+        @DisplayName("add balance to account, over 100 cents")
+        void deposit_2() {
+            final BankAccount CuT = new BankAccount(new Money(2, 50));
+            CuT.deposit(new Money(0, 80));
+            assertAll("deposit_2 assertions"
+                , () -> assertEquals(3, CuT.money.dollars(), "Dollars is correct")
+                , () -> assertEquals(30, CuT.money.cents(), "Cents is correct")
+            );
+        }
+        
         @Test
         @DisplayName("attempt to add negative balance to account")
         void deposit_fail() {
