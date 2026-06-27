@@ -81,7 +81,11 @@ public class MyOptional<T> {
     }
 
     T get() throws NoSuchElementException{
-        throw new NoSuchElementException(noSuchElem);
+        if(isPresent()){
+            return value;
+        }else{
+            throw new NoSuchElementException(noSuchElem);
+        }
     }
 
     void ifPresent(Consumer<T> cons){
