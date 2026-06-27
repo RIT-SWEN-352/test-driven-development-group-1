@@ -82,13 +82,16 @@ class BankAccountTest {
             assertFalse(CuT.isAccountEmpty());
         }
 
-        @Test
+        @ParameterizedTest(name = "Test dollars={0}, cents={1}")
+        @CsvSource({"100, 50", "45, 35", "0, 80"})
         @DisplayName("add balance to account")
-        void deposit_1() {
+        void deposit(int dollars, int cents) {
             final BankAccount CuT = new BankAccount();
-            CuT.deposit(new Money(10, 0));
-            assertEquals(CuT.getBalance().dollars(), 10);
-            assertEquals(CuT.getBalance().cents(), 0);
+            CuT.deposit(new Money(dollars, cents));
+            assertAll("deposit assertions"
+                , () -> assertEquals(dollars, CuT.money.dollars(), "Dollars is correct")
+                , () -> assertEquals(cents, CuT.money.cents(), "Cents is correct")
+            );
         }
 
         @Test
