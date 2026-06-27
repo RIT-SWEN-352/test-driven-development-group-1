@@ -76,7 +76,7 @@ class BankAccountTest {
         }
 
         @Test
-        @DisplayName("checks whehter the account balance is zero")
+        @DisplayName("checks whether the account balance is zero")
         void empty_2() {
             final BankAccount CuT = new BankAccount(new Money(30, 12));
             assertFalse(CuT.isAccountEmpty());
@@ -87,8 +87,20 @@ class BankAccountTest {
         void deposit_1() {
             final BankAccount CuT = new BankAccount();
             CuT.deposit(new Money(10, 0));
-            //assertEquals(CuT.deposit(new Money(10, 0)).dollars(), 10);
-            assertEquals(CuT.getBalance().cents(), 0);
             assertEquals(CuT.getBalance().dollars(), 10);
+            assertEquals(CuT.getBalance().cents(), 0);
+        }
+
+        @Test
+        @DisplayName("attempt to add negative balance to account")
+        void deposit_fail() {
+            final BankAccount CuT = new BankAccount();
+            final Exception e = assertThrows(IllegalArgumentException.class, () -> CuT.deposit(new Money(-1, 0)));
+
+            assertAll("deposit_fail assertions"
+                , () -> assertEquals("Deposit cannot be negative.", e.getMessage())
+                , () -> assertEquals(CuT.getBalance().dollars(), 0)
+                , () -> assertEquals(CuT.getBalance().cents(), 0)
+            );            
         }
 }

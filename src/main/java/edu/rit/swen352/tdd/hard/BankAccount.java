@@ -81,8 +81,5 @@ public class BankAccount {
         }
     
         this.money = new Money(dollars, cents);
-        //this.money.dollars() = dollars;
-        //this.money.setMoney(dollars, cents);
-        //this.getBalance().setMoney(dollars, cents);
     }
 }
