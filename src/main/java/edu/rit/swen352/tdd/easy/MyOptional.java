@@ -43,6 +43,7 @@ public class MyOptional<T> {
 
     T value;
     static final String nullParamMsg = "Value cannot be null";
+    static final String noSuchElem = " illegal get method on empty optional";
 
     private MyOptional(){
         value = null;

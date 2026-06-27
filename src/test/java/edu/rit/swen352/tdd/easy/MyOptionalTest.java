@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.security.InvalidParameterException;
+import java.util.NoSuchElementException;
 import java.util.function.Consumer;
 
 
@@ -117,6 +118,13 @@ class MyOptionalTest {
             void is_present(){
                 boolean pres = x.isPresent();
                 assertFalse(pres,"Empty optional should return false for isPresent()");
+            }
+
+            @Test
+            @DisplayName("get")
+            void get(){
+                Exception exc = assertThrows(NoSuchElementException.class,()->x.get(),"Empty optionals should throw NoSuchElementException");
+                assertEquals(MyOptional.noSuchElem, exc.getMessage());
             }
     
         }
