@@ -1,6 +1,8 @@
 package edu.rit.swen352.tdd.easy;
 
 import java.security.InvalidParameterException;
+import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 
 /**
  * MyOptional contains a single value, of any type, or nothing at all.
@@ -71,6 +73,20 @@ public class MyOptional<T> {
         }else{
             return MyOptional.of(val);
         }
+    }
+
+    boolean isPresent(){
+        assert false: "NYI";
+        return false;
+    }
+
+    T get() throws NoSuchElementException{
+        assert false: "NYI";
+        return null;
+    }
+
+    void ifPresent(Consumer<T> cons){
+        assert false: "NYI";
     }
 
 }

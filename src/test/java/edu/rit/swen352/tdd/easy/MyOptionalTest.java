@@ -98,4 +98,45 @@ class MyOptionalTest {
 
     }
 
+
+    @Nested
+    @DisplayName("non-static functions")
+    class non_static{
+
+        @Nested
+        @DisplayName("on empty optional: ")
+        class empty{
+    
+            @BeforeEach
+            void empty_optional(){
+                x = MyOptional.empty();
+            }
+    
+            @Test
+            @DisplayName("isPresent")
+            void is_present(){
+                boolean pres = x.isPresent();
+                assertFalse(pres,"Empty optional should return false for isPresent()");
+            }
+    
+        }
+    
+        @Nested
+        @DisplayName("on optional with value: ")
+        class value{
+            @BeforeEach
+            void valued_optional(){
+                x = MyOptional.of(testVal);
+            }
+    
+            @Test
+            @DisplayName("isPresent")
+            void is_present(){
+                boolean pres = x.isPresent();
+                assertTrue(pres,"Optional with value returns false");
+            }
+        }
+    }
+
+
 }
