@@ -65,6 +65,11 @@ public class BankAccount {
     }
 
     public void deposit(Money depositMoney) {
+        // check for negative deposit
+        if(depositMoney.dollars() < 0 || depositMoney.cents() < 0) {
+            throw new IllegalArgumentException("Deposit cannot be negative.");
+        }
+        
         // add dollars
         int dollars = depositMoney.dollars();
         dollars += this.getBalance().dollars();
