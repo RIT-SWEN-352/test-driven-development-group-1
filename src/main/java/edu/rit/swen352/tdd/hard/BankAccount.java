@@ -4,7 +4,9 @@ package edu.rit.swen352.tdd.hard;
  * A Value Object for American monetary values with fixed integer
  * values for dollars and cents.
  */
-record Money(int dollars, int cents) {}
+record Money(int dollars, int cents) {
+    
+}
 
 /**
  * An American bank account that permits deposits and withdrawals.
@@ -29,7 +31,7 @@ record Money(int dollars, int cents) {}
  */
 public class BankAccount {
 
-    final Money money;
+    Money money;
 
     public BankAccount(Money money) {
         if(money.dollars() < 0 || money.cents() < 0) {
@@ -47,6 +49,10 @@ public class BankAccount {
         this(new Money(0, 0));
     }
 
+    public Money getMoney() {
+        return this.money;
+    }
+
     public Money getBalance() {
         return this.money;
     }
@@ -59,16 +65,24 @@ public class BankAccount {
     }
 
     public void deposit(Money depositMoney) {
+        // add dollars
         int dollars = depositMoney.dollars();
         dollars += this.getBalance().dollars();
 
+        // add cents
         int cents = depositMoney.cents();
         cents += this.getBalance().cents();
-
-        Money money = new Money(dollars, cents);
-        
-        //this.money.dollars() += depositMoney.dollars();
-
-        assert false : "Not yet implimented";
+        // check if cents will push into new dollar
+        if(cents >= 100) {
+            while(cents >= 100) {
+                dollars++;
+                cents -= 100;
+            }
+        }
+    
+        this.money = new Money(dollars, cents);
+        //this.money.dollars() = dollars;
+        //this.money.setMoney(dollars, cents);
+        //this.getBalance().setMoney(dollars, cents);
     }
 }

@@ -87,6 +87,8 @@ class BankAccountTest {
         void deposit_1() {
             final BankAccount CuT = new BankAccount();
             CuT.deposit(new Money(10, 0));
-            assertEquals(CuT.getBalance(), new Money(10, 0));
+            //assertEquals(CuT.deposit(new Money(10, 0)).dollars(), 10);
+            assertEquals(CuT.getBalance().cents(), 0);
+            assertEquals(CuT.getBalance().dollars(), 10);
         }
 }
