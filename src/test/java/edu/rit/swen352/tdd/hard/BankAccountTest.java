@@ -129,4 +129,17 @@ class BankAccountTest {
                 , () -> assertEquals((80 - cents), CuT.money.cents(), "Cents is correct")
             );
         }
+
+        @Test
+        @DisplayName("attempt to withdraw negative amount")
+        void withdraw_fail() {
+            final BankAccount CuT = new BankAccount();
+            final Exception e = assertThrows(IllegalArgumentException.class, () -> CuT.withdraw(new Money(-1, -1)));
+
+            assertAll("withdraw_fail assertions"
+                , () -> assertEquals("Withdraw amount cannot be negative.", e.getMessage())
+                , () -> assertEquals(CuT.getBalance().dollars(), 0)
+                , () -> assertEquals(CuT.getBalance().cents(), 0)
+            );
+        }
 }
