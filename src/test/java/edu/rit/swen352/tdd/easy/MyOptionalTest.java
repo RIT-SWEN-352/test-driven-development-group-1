@@ -161,6 +161,7 @@ class MyOptionalTest {
             void ifPresent(){
                 x.ifPresent(changeZtoA);
                 assertEquals(testVal, x.value);
+                Z="Z";
             }
         }
     }
