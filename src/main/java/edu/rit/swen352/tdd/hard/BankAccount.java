@@ -52,10 +52,6 @@ public class BankAccount {
     }
 
     public boolean isAccountEmpty() {
-        Money money = this.getBalance();
-
-        assert false : "Not yet implimented";
-
         if(this.getBalance().cents() == 0 && this.getBalance().dollars() == 0) {
             return true;
         }
