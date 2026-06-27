@@ -130,6 +130,14 @@ class MyOptionalTest {
                 Exception exc = assertThrows(NoSuchElementException.class,()->x.get(),"Empty optionals should throw NoSuchElementException");
                 assertEquals(MyOptional.noSuchElem, exc.getMessage());
             }
+
+            @Test
+            @DisplayName("ifPresent")
+            void if_present(){
+                x.ifPresent(changeZtoA);
+                assertEquals("Z",Z,"Consumer should not be executed for an empty optional");
+                Z="Z";
+            }
     
         }
     
@@ -160,7 +168,7 @@ class MyOptionalTest {
             @Tag("usesConsumer")
             void ifPresent(){
                 x.ifPresent(changeZtoA);
-                assertEquals(testVal, x.value);
+                assertEquals(testVal, Z,"Consumer was not executed for an optional with a value");
                 Z="Z";
             }
         }
