@@ -81,4 +81,12 @@ class BankAccountTest {
             final BankAccount CuT = new BankAccount(new Money(30, 12));
             assertFalse(CuT.isAccountEmpty());
         }
+
+        @Test
+        @DisplayName("add balance to account")
+        void deposit_1() {
+            final BankAccount CuT = new BankAccount();
+            CuT.deposit(new Money(10, 0));
+            assertEquals(CuT.getBalance(), new Money(10, 0));
+        }
 }

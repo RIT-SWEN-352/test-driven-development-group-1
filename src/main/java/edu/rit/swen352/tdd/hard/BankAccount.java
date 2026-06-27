@@ -57,4 +57,18 @@ public class BankAccount {
         }
         return false;
     }
+
+    public void deposit(Money depositMoney) {
+        int dollars = depositMoney.dollars();
+        dollars += this.getBalance().dollars();
+
+        int cents = depositMoney.cents();
+        cents += this.getBalance().cents();
+
+        Money money = new Money(dollars, cents);
+        
+        //this.money.dollars() += depositMoney.dollars();
+
+        assert false : "Not yet implimented";
+    }
 }
