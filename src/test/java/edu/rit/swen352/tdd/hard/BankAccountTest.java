@@ -68,5 +68,10 @@ class BankAccountTest {
             assertEquals(CuT.getBalance(), CuT.money);
         }
 
-        // add test to ensure cents over 100 aren't added
+        @Test
+        @DisplayName("checks whether the account balance is zero")
+        void empty_1() {
+            final BankAccount CuT = new BankAccount();
+            assertTrue(CuT.isAccountEmpty());
+        }
 }

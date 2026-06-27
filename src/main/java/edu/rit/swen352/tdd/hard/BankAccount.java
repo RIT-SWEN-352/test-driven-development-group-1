@@ -39,7 +39,7 @@ public class BankAccount {
         if(money.cents() >= 100) {
             throw new IllegalArgumentException("Cents count must be under 100.");
         }
-        
+
         this.money = money;
     }
 
@@ -49,5 +49,17 @@ public class BankAccount {
 
     public Money getBalance() {
         return this.money;
+    }
+
+    public boolean isAccountEmpty() {
+        Money money = this.getBalance();
+
+        assert false : "Not yet implimented";
+
+        if(this.getBalance().cents() == 0 && this.getBalance().dollars() == 0) {
+            return true;
+        }
+        return false;
+
     }
 }
