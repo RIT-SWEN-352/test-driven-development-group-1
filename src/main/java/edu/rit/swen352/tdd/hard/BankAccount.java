@@ -56,6 +56,5 @@ public class BankAccount {
             return true;
         }
         return false;
-
     }
 }

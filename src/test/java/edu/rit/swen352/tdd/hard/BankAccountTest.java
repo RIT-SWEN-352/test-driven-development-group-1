@@ -71,7 +71,14 @@ class BankAccountTest {
         @Test
         @DisplayName("checks whether the account balance is zero")
         void empty_1() {
-            final BankAccount CuT = new BankAccount();
+            final BankAccount CuT = new BankAccount(new Money(0, 0));
             assertTrue(CuT.isAccountEmpty());
+        }
+
+        @Test
+        @DisplayName("checks whehter the account balance is zero")
+        void empty_2() {
+            final BankAccount CuT = new BankAccount(new Money(30, 12));
+            assertFalse(CuT.isAccountEmpty());
         }
 }
