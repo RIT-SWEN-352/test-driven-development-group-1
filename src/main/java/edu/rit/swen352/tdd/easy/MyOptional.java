@@ -76,8 +76,7 @@ public class MyOptional<T> {
     }
 
     boolean isPresent(){
-        assert false: "NYI";
-        return false;
+        return value!=null;
     }
 
     T get() throws NoSuchElementException{
