@@ -89,7 +89,9 @@ public class MyOptional<T> {
     }
 
     void ifPresent(Consumer<T> cons){
-        cons.accept(value);
+        if(isPresent()){
+            cons.accept(value);
+        }
     }
 
 }
