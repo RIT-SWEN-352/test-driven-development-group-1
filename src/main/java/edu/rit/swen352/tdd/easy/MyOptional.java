@@ -1,5 +1,9 @@
 package edu.rit.swen352.tdd.easy;
 
+import java.security.InvalidParameterException;
+import java.util.NoSuchElementException;
+import java.util.function.Consumer;
+
 /**
  * MyOptional contains a single value, of any type, or nothing at all.
  *
@@ -36,4 +40,58 @@ package edu.rit.swen352.tdd.easy;
  * @param <T> the type of value.
  */
 public class MyOptional<T> {
+
+    T value;
+    static final String nullParamMsg = "Value cannot be null";
+    static final String noSuchElem = " illegal get method on empty optional";
+
+    private MyOptional(){
+        value = null;
+    }
+
+    private MyOptional(T value){   
+        this.value=value; 
+    }
+
+    public static <T> MyOptional<T> empty(){
+        return new MyOptional<T>();
+    }
+
+    public static <T> MyOptional<T> of(T val){
+        if(val==null){
+            throw new InvalidParameterException(nullParamMsg);
+        }
+        return new MyOptional<T>(val);
+    }
+
+    public static <T> MyOptional<T> ofNullable(){
+        return MyOptional.empty();
+    }
+
+    public static <T> MyOptional<T> ofNullable(T val){
+        if(val==null){
+            return MyOptional.empty();
+        }else{
+            return MyOptional.of(val);
+        }
+    }
+
+    boolean isPresent(){
+        return value!=null;
+    }
+
+    T get() throws NoSuchElementException{
+        if(isPresent()){
+            return value;
+        }else{
+            throw new NoSuchElementException(noSuchElem);
+        }
+    }
+
+    void ifPresent(Consumer<T> cons){
+        if(isPresent()){
+            cons.accept(value);
+        }
+    }
+
 }
