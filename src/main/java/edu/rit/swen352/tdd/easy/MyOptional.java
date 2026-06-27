@@ -89,7 +89,7 @@ public class MyOptional<T> {
     }
 
     void ifPresent(Consumer<T> cons){
-        assert false: "NYI";
+        cons.accept(value);
     }
 
 }
