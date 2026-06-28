@@ -1,10 +1,16 @@
 package edu.rit.swen352.tdd.hard;
 
-import javax.lang.model.type.PrimitiveType;
-
 public interface UnitEnum {
+
+    double getBaseRatio();
+    default double getConversionRatio(UnitEnum convertTo, UnitEnum convertFrom){
+        return convertFrom.getBaseRatio()/convertTo.getBaseRatio();
+    }
+    default double getConversionRatio(UnitEnum convertFrom){
+        return getConversionRatio(this, convertFrom);
+    }
     
-    enum Mass {
+    enum Mass implements UnitEnum {
         KILOGRAM(1,"kg"),
         MILLIGRAM(.000001,"mg"),
         GRAM(.001,"g"),
@@ -19,12 +25,13 @@ public interface UnitEnum {
             this.abbr = abbr;
         }
 
-        public double conversionRatio(Mass convertFrom) {
-            return convertFrom.kg/this.kg;
-        }
-
         public String toString(){
             return abbr;
+        }
+
+        @Override
+        public double getBaseRatio() {
+            return kg;
         }
 
     }

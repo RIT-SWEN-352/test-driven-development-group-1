@@ -28,7 +28,7 @@ class UnitEnumTest{
             void convert_to_big(){
                 Mass CuT = Mass.GRAM;
                 Mass kg = Mass.KILOGRAM;
-                double conversionRatio = CuT.conversionRatio(kg);
+                double conversionRatio = CuT.getConversionRatio(kg);
                 assertEquals(1000, conversionRatio, "Conversion calculated improperly");
             }
     
@@ -37,7 +37,7 @@ class UnitEnumTest{
             void convert_to_small(){
                 Mass CuT = Mass.GRAM;
                 Mass mg = Mass.MILLIGRAM;
-                double conversionRatio = CuT.conversionRatio(mg);
+                double conversionRatio = CuT.getConversionRatio(mg);
                 assertEquals(.001, conversionRatio);
             }
         }
