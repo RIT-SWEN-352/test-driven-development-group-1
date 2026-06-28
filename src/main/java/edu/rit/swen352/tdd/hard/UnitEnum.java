@@ -1,5 +1,7 @@
 package edu.rit.swen352.tdd.hard;
 
+import javax.lang.model.type.PrimitiveType;
+
 public interface UnitEnum {
     
     enum Mass {
@@ -15,6 +17,9 @@ public interface UnitEnum {
             this.kg=kg;
         }
 
+        /**
+         * returns How many __this__ in one __convertFrom__ unit 
+         */
         public double conversionRatio(Mass convertFrom) {
             return convertFrom.kg/this.kg;
         }

@@ -20,12 +20,21 @@ class UnitEnumTest{
     class MassTest{
         
         @Test
-        @DisplayName("Convert")
-        void convert(){
+        @DisplayName("convert small unit to big unit (result > 1)")
+        void convert_to_big(){
             Mass CuT = Mass.GRAM;
             Mass kg = Mass.KILOGRAM;
             double conversionRatio = CuT.conversionRatio(kg);
-            assertEquals(1000, conversionRatio);
+            assertEquals(1000, conversionRatio, "Conversion calculated improperly");
+        }
+
+        @Test
+        @DisplayName("convert big unit to small unit (decimal result)")
+        void convert_to_small(){
+            Mass CuT = Mass.GRAM;
+            Mass mg = Mass.MILLIGRAM;
+            double conversionRatio = CuT.conversionRatio(mg);
+            assertEquals(.001, conversionRatio);
         }
 
     }
