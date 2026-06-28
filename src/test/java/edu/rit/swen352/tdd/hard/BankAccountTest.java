@@ -105,15 +105,23 @@ class BankAccountTest {
 
         @Test
         @DisplayName("attempt to add negative balance to account")
-        void deposit_fail() {
+        void deposit_fail_1() {
             final BankAccount CuT = new BankAccount();
             final Exception e = assertThrows(IllegalArgumentException.class, () -> CuT.deposit(new Money(-1, 0)));
 
-            assertAll("deposit_fail assertions"
+            assertAll("deposit_fail_1 assertions"
                 , () -> assertEquals("Deposit cannot be negative.", e.getMessage())
                 , () -> assertEquals(CuT.getBalance().dollars(), 0)
                 , () -> assertEquals(CuT.getBalance().cents(), 0)
             );            
+        }
+
+        @Test
+        @DisplayName("attempt to add over 100 cents to account")
+        void deposit_fail_2() {
+            final BankAccount CuT = new BankAccount();
+            final Exception e = assertThrows(IllegalArgumentException.class, () -> CuT.deposit(new Money(0, 110)));
+            assertEquals("Cents count must be under 100.", e.getMessage());
         }
 
         @ParameterizedTest(name = "Test dollars={0}, cents={1}")
