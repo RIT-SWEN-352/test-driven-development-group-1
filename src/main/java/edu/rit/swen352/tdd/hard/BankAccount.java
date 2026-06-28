@@ -102,7 +102,7 @@ public class BankAccount {
         // check if cents will push into new dollar
         if(cents < 0) {
             dollars--;
-            cents = 100 - withdrawMoney.cents();
+            cents = (100 - Math.abs(cents));
         }
 
         this.money = new Money(dollars, cents);

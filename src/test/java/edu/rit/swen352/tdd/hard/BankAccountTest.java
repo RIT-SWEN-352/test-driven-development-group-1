@@ -120,13 +120,24 @@ class BankAccountTest {
 
         @ParameterizedTest(name = "Test dollars={0}, cents={1}")
         @CsvSource({"100, 50", "45, 35", "0, 80"})
-        @DisplayName("add balance to account, under 100 cents")
+        @DisplayName("withdraw balance from account, under 100 cents")
         void withdraw_1(int dollars, int cents) {
             final BankAccount CuT = new BankAccount(new Money(100, 80));
             CuT.withdraw(new Money(dollars, cents));
-            assertAll("withdraw assertions"
+            assertAll("withdraw_1 assertions"
                 , () -> assertEquals((100 - dollars), CuT.money.dollars(), "Dollars is correct")
                 , () -> assertEquals((80 - cents), CuT.money.cents(), "Cents is correct")
+            );
+        }
+
+        @Test
+        @DisplayName("withdraw balance from account, over 100 cents")
+        void withdraw_2() {
+            final BankAccount CuT = new BankAccount(new Money(5, 20));
+            CuT.withdraw(new Money(2, 30));
+            assertAll("withdraw_2 assertions"
+                , () -> assertEquals(2, CuT.money.dollars(), "Dollars is correct")
+                , () -> assertEquals((90), CuT.money.cents(), "Cents is correct")
             );
         }
 
