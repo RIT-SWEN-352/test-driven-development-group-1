@@ -1,8 +1,8 @@
 package edu.rit.swen352.tdd.hard;
 
-public interface Unit {
+public interface UnitEnum {
     
-    public enum Mass {
+    enum Mass {
         KILOGRAM(1),
         MILLIGRAM(.000001),
         GRAM(.001),
@@ -15,9 +15,8 @@ public interface Unit {
             this.kg=kg;
         }
 
-        public double conversionRatio(Mass y) {
-            assert false : "Not Yet Implemented";
-            return 0;
+        public double conversionRatio(Mass convertFrom) {
+            return convertFrom.kg/this.kg;
         }
 
     }
