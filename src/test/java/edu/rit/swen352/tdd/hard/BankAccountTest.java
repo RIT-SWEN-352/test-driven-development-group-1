@@ -165,7 +165,7 @@ class BankAccountTest {
         void withdraw_fail_2() {
             final BankAccount CuT = new BankAccount();
             final Exception e = assertThrows(IllegalArgumentException.class, () -> CuT.withdraw(new Money(0, 110)));
-            assertEquals("Cents amount must be under 100.", e.getMessage());
+            assertEquals("Cents count must be under 100.", e.getMessage());
         }
 
         @Test

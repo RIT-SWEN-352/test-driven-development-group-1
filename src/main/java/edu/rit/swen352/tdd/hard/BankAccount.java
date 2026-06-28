@@ -93,6 +93,11 @@ public class BankAccount {
             throw new IllegalArgumentException("Withdraw amount cannot be negative.");
         }
 
+        // check for cent count over 100
+        if(withdrawMoney.cents() >= 100) {
+            throw new IllegalArgumentException("Cents count must be under 100.");
+        }
+        
         // subtract dollars
         int dollars = this.getBalance().dollars();
         dollars -= withdrawMoney.dollars();
