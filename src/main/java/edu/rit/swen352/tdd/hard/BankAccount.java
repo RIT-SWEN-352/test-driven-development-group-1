@@ -107,4 +107,9 @@ public class BankAccount {
 
         this.money = new Money(dollars, cents);
     }
+
+    public String toString() {
+        assert false : "Not yet implimented";
+        return "0";
+    }
 }

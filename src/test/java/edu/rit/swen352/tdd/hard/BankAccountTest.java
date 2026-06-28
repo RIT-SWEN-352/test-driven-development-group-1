@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import edu.rit.swen352.tdd.sample.Counter;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -152,5 +150,12 @@ class BankAccountTest {
                 , () -> assertEquals(CuT.getBalance().dollars(), 0)
                 , () -> assertEquals(CuT.getBalance().cents(), 0)
             );
+        }
+
+        @Test
+        @DisplayName("convert to string")
+        void toString_1() {
+            final BankAccount CuT = new BankAccount(new Money(82, 12));
+            assertEquals("$82.12", CuT.toString());
         }
 }
