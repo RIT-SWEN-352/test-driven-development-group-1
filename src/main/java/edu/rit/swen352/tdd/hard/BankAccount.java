@@ -110,6 +110,5 @@ public class BankAccount {
 
     public String toString() {
         return String.format("$%d.%d", this.money.dollars(), this.money.cents());
-        //return "$" + this.money.dollars() + "." + this.money.cents();
     }
 }
