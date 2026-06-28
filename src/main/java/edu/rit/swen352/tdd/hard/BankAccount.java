@@ -109,7 +109,7 @@ public class BankAccount {
     }
 
     public String toString() {
-        assert false : "Not yet implimented";
-        return "0";
+        return String.format("$%d.%d", this.money.dollars(), this.money.cents());
+        //return "$" + this.money.dollars() + "." + this.money.cents();
     }
 }
