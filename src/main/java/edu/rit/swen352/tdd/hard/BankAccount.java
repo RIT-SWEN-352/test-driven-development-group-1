@@ -47,10 +47,6 @@ public class BankAccount {
         this(new Money(0, 0));
     }
 
-    public Money getMoney() {
-        return this.money;
-    }
-
     public Money getBalance() {
         return this.money;
     }
@@ -66,6 +62,11 @@ public class BankAccount {
         // check for negative deposit
         if(depositMoney.dollars() < 0 || depositMoney.cents() < 0) {
             throw new IllegalArgumentException("Deposit cannot be negative.");
+        }
+
+        // check for cent count over 100
+        if(depositMoney.cents() >= 100) {
+            throw new IllegalArgumentException("Cents count must be under 100.");
         }
         
         // add dollars
