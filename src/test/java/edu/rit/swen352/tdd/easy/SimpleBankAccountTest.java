@@ -39,10 +39,19 @@ class SimpleBankAccountTest {
 
     // isAccountEmpty() TESTS
     @Test
-    @DisplayName("isAccountEmpty(): returns true for account balance being 0 and passes")
-    void testIsAccountemptyPass() {
+    @DisplayName("isAccountEmpty(): returns true for account balance being 0")
+    void testIsAccountemptyTrue() {
         SimpleBankAccount simpleAccount = new SimpleBankAccount();
         boolean result = simpleAccount.isAccountEmpty();
         assertTrue(result);
+    }
+
+    @Test
+    @DisplayName("isAccountEmpty(): returns false when account balance is non-zero")
+    void testIsAccountemptyFalse() {
+        float balance = 100.15f;
+        SimpleBankAccount simpleAccount = new SimpleBankAccount(balance);
+        boolean result = simpleAccount.isAccountEmpty();
+        assertFalse(result);
     }
 }
