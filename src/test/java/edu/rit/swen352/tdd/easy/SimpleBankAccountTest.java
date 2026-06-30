@@ -156,4 +156,16 @@ class SimpleBankAccountTest {
         String actualToString = simpleAccount.toString();
         assertEquals(expectedToString, actualToString);
     }
+
+    @Test
+    @DisplayName("toString(): prints out whole number balance")
+    void testToStringWholeNumberBalance() {
+        float balance = 30f; 
+        String expectedToString = "$30.00";
+
+        SimpleBankAccount simpleAccount = new SimpleBankAccount(balance);
+        
+        String actualToString = simpleAccount.toString();
+        assertEquals(expectedToString, actualToString);
+    }
 }
