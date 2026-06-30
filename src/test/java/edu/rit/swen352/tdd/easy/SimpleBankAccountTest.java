@@ -94,4 +94,20 @@ class SimpleBankAccountTest {
         
         assertThrows(IllegalArgumentException.class, () -> simpleAccount.deposit(depositAmount));
     }
+
+    // withdraw() TESTS
+    @Test
+    @DisplayName("withdraw(): subtracts from balance successfully")
+    void testWithdrawFromNormalBalance() {
+        float oldBalance = 20.15f; 
+        float expectedBalance = 10.00f;
+        float withdrawalAmount = 10.15f;
+
+        SimpleBankAccount simpleAccount = new SimpleBankAccount(oldBalance);
+        
+        simpleAccount.withdraw(withdrawalAmount);
+
+        float actualBalance = simpleAccount.getBalance();
+        assertEquals(expectedBalance, actualBalance);
+    }
 }
