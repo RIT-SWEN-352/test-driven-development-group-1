@@ -54,4 +54,20 @@ class SimpleBankAccountTest {
         boolean result = simpleAccount.isAccountEmpty();
         assertFalse(result);
     }
+
+    // deposit TESTS
+    @Test
+    @DisplayName("deposit(): adds to non-zero balance without any errors")
+    void testDepositToBalance() {
+        float oldBalance = 10.15f; 
+        float expectedBalance = 20.30f;
+        float depositAmount = oldBalance;
+
+        SimpleBankAccount simpleAccount = new SimpleBankAccount(oldBalance);
+        
+        simpleAccount.deposit(depositAmount);
+
+        float actualBalance = simpleAccount.getBalance();
+        assertEquals(expectedBalance, actualBalance);
+    }
 }

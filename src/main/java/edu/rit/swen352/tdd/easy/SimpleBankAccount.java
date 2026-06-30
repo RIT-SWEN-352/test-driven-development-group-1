@@ -43,4 +43,8 @@ public class SimpleBankAccount {
             return false;
         }
     }
+
+    public void deposit(float amount) {
+        
+    }
 }
