@@ -53,6 +53,6 @@ public class SimpleBankAccount {
     }
 
     public void withdraw(float amount) {
-
+        this.balance -= amount;
     }
 }
