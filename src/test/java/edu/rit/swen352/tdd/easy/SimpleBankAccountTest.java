@@ -121,4 +121,15 @@ class SimpleBankAccountTest {
         
         assertThrows(IllegalArgumentException.class, () -> simpleAccount.withdraw(withdrawalAmount));
     }
+
+    @Test
+    @DisplayName("withdraw(): subtracts a negative amount from balance, causing an exception to be thrown")
+    void testWithdrawNegativeAmount() {
+        float oldBalance = 20.15f; 
+        float withdrawalAmount = -100.15f;
+
+        SimpleBankAccount simpleAccount = new SimpleBankAccount(oldBalance);
+        
+        assertThrows(IllegalArgumentException.class, () -> simpleAccount.withdraw(withdrawalAmount));
+    }
 }
