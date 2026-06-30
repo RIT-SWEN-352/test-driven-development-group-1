@@ -110,4 +110,15 @@ class SimpleBankAccountTest {
         float actualBalance = simpleAccount.getBalance();
         assertEquals(expectedBalance, actualBalance);
     }
+
+    @Test
+    @DisplayName("withdraw(): subtracts too much from balance, causing an exception to be thrown")
+    void testWithdrawExceedsBalance() {
+        float oldBalance = 20.15f; 
+        float withdrawalAmount = 45.15f;
+
+        SimpleBankAccount simpleAccount = new SimpleBankAccount(oldBalance);
+        
+        assertThrows(IllegalArgumentException.class, () -> simpleAccount.withdraw(withdrawalAmount));
+    }
 }
