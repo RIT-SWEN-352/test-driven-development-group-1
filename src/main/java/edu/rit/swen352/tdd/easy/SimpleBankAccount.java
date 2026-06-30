@@ -37,6 +37,6 @@ public class SimpleBankAccount {
     }
 
     public boolean isAccountEmpty() {
-        return false;
+        return true;
     }
 }
