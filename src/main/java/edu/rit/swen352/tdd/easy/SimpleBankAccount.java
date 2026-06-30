@@ -45,6 +45,10 @@ public class SimpleBankAccount {
     }
 
     public void deposit(float amount) {
+        if (amount < 0.00f) {
+            throw new IllegalArgumentException("ERROR: Deposit amount must be greater than 0");
+        } 
+
         this.balance += amount;
     }
 }
