@@ -54,7 +54,9 @@ public class SimpleBankAccount {
 
     public void withdraw(float amount) {
         if (amount > this.balance) {
-            throw new IllegalArgumentException("ERROR: Withdraw amount must be less than current balance");
+            throw new IllegalArgumentException("ERROR: Withdrawal amount must be less than current balance");
+        } else if (amount < 0) {
+            throw new IllegalArgumentException("ERROR: Withdrawal amount must be greater than 0");
         }
 
         this.balance -= amount;
