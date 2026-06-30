@@ -145,4 +145,15 @@ class SimpleBankAccountTest {
         String actualToString = simpleAccount.toString();
         assertEquals(expectedToString, actualToString);
     }
+
+    @Test
+    @DisplayName("toString(): prints out zero balance")
+    void testToStringZeroBalance() {
+        String expectedToString = "$0.00";
+
+        SimpleBankAccount simpleAccount = new SimpleBankAccount();
+        
+        String actualToString = simpleAccount.toString();
+        assertEquals(expectedToString, actualToString);
+    }
 }
