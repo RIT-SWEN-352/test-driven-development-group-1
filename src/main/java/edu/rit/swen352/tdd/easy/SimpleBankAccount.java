@@ -37,6 +37,10 @@ public class SimpleBankAccount {
     }
 
     public boolean isAccountEmpty() {
-        return true;
+        if (this.balance == 0.00f) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
