@@ -83,4 +83,15 @@ class SimpleBankAccountTest {
         float actualBalance = simpleAccount.getBalance();
         assertEquals(depositAmount, actualBalance);
     }
+
+    @Test
+    @DisplayName("deposit(): throws exception when negative amount is deposited")
+    void testDepositNegativeAmountException() {
+        float balance = 10.00f;
+        float depositAmount = -50.50f;
+
+        SimpleBankAccount simpleAccount = new SimpleBankAccount(balance);
+        
+        assertThrows(IllegalArgumentException.class, () -> simpleAccount.deposit(depositAmount));
+    }
 }
