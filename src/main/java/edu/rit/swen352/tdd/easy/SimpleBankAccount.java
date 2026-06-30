@@ -28,6 +28,10 @@ public class SimpleBankAccount {
         this.balance = initialBalance;
     }
 
+    public SimpleBankAccount() {
+        this.balance = 0.00f;
+    }
+
     public float getBalance() {
         return balance;
     }

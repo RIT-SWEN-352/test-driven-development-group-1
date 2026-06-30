@@ -19,7 +19,7 @@ class SimpleBankAccountTest {
 
     @Test
     @DisplayName("Constructor: without supplied balance (default = 0")
-    void testConstructorWithSuppliedBalance() {
+    void testConstructorWithoutSuppliedBalance() {
         SimpleBankAccount simpleAcount = new SimpleBankAccount();
         float expectedBalance = 0.00f;
         assertEquals(expectedBalance, simpleAcount.getBalance());
