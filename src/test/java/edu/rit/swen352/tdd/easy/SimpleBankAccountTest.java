@@ -132,4 +132,17 @@ class SimpleBankAccountTest {
         
         assertThrows(IllegalArgumentException.class, () -> simpleAccount.withdraw(withdrawalAmount));
     }
+
+    // toString() TESTS
+    @Test
+    @DisplayName("toString(): prints out balance with non-zero decimal amounts")
+    void testToStringNonZeroDecimalAmount() {
+        float balance = 20.15f; 
+        String expectedToString = "$20.15";
+
+        SimpleBankAccount simpleAccount = new SimpleBankAccount(balance);
+        
+        String actualToString = simpleAccount.toString();
+        assertEquals(expectedToString, actualToString);
+    }
 }

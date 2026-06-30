@@ -61,4 +61,9 @@ public class SimpleBankAccount {
 
         this.balance -= amount;
     }
+
+    @Override
+    public String toString() {
+        return "lol";
+    }
 }
