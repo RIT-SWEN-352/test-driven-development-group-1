@@ -68,5 +68,12 @@ package edu.rit.swen352.tdd.hard;
  * </ul>
  *
  */
+
+/* 
+PLAN:
+    Make units enum
+
+*/
 public class Measurement {
+
 }
