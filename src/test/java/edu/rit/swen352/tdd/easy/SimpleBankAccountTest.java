@@ -15,16 +15,16 @@ class SimpleBankAccountTest {
     @DisplayName("Constructor: with supplied balance (ex:3000.75")
     void testConstructorWithSuppliedBalance() {
         float balance = 3000.75f;
-        SimpleBankAccount simpleAcount = new SimpleBankAccount(balance);
-        assertEquals(balance, simpleAcount.getBalance());
+        SimpleBankAccount simpleAccount = new SimpleBankAccount(balance);
+        assertEquals(balance, simpleAccount.getBalance());
     }
 
     @Test
     @DisplayName("Constructor: without supplied balance (default = 0")
     void testConstructorWithoutSuppliedBalance() {
-        SimpleBankAccount simpleAcount = new SimpleBankAccount();
+        SimpleBankAccount simpleAccount = new SimpleBankAccount();
         float expectedBalance = 0.00f;
-        assertEquals(expectedBalance, simpleAcount.getBalance());
+        assertEquals(expectedBalance, simpleAccount.getBalance());
     }
 
     // getBalance() TEST
@@ -33,7 +33,16 @@ class SimpleBankAccountTest {
     @DisplayName("getBalance: returns current balance")
     void testGetBalanceNormal() {
         float balance = 10.75f;
-        SimpleBankAccount simpleAcount = new SimpleBankAccount(balance);
-        assertEquals(balance, simpleAcount.getBalance());
+        SimpleBankAccount simpleAccount = new SimpleBankAccount(balance);
+        assertEquals(balance, simpleAccount.getBalance());
+    }
+
+    // isAccountEmpty() TESTS
+    @Test
+    @DisplayName("isAccountEmpty(): returns true and passes")
+    void testIsAccountemptyPass() {
+        SimpleBankAccount simpleAccount = new SimpleBankAccount();
+        boolean result = simpleAccount.isAccountEmpty();
+        assertTrue(result);
     }
 }
