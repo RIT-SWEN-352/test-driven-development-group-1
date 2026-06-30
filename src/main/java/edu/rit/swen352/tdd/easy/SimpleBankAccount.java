@@ -64,6 +64,6 @@ public class SimpleBankAccount {
 
     @Override
     public String toString() {
-        return "lol";
+        return String.format("$%.2f", this.balance);
     }
 }
