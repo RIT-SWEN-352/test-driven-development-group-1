@@ -9,6 +9,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * Test suite for the {@link SimpleBankAccount} component.
  */
 class SimpleBankAccountTest {
+
+    // CONSTRUCTOR TESTS
     @Test
     @DisplayName("Constructor: with supplied balance (ex:3000.75")
     void testConstructorWithSuppliedBalance() {
@@ -23,5 +25,15 @@ class SimpleBankAccountTest {
         SimpleBankAccount simpleAcount = new SimpleBankAccount();
         float expectedBalance = 0.00f;
         assertEquals(expectedBalance, simpleAcount.getBalance());
+    }
+
+    // getBalance() TEST
+    // Since constructor needed getBalance, the test for the getter passed automatically
+    @Test
+    @DisplayName("getBalance: returns current balance")
+    void testGetBalanceNormal() {
+        float balance = 10.75f;
+        SimpleBankAccount simpleAcount = new SimpleBankAccount(balance);
+        assertEquals(balance, simpleAcount.getBalance());
     }
 }
