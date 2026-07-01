@@ -95,6 +95,16 @@ class MyStackTest {
         assertEquals(1, stack.size());
     }  
 
+    @Test
+    @DisplayName("push: throws IllegalStateException when stack is full")
+    void testPushThrowsExceptionWhenFull() {
+        int givenCapacity = 2;
+        MyStack<Integer> stack = new MyStack<Integer>(givenCapacity);
+        stack.push(1);
+        stack.push(2);
+        assertThrows(IllegalStateException.class, () -> stack.push(3));
+    }
+
     // pop() TESTS
 
     // peek() TESTS
