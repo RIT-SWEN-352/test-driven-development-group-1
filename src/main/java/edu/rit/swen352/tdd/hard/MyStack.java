@@ -50,6 +50,7 @@ public class MyStack<T> {
     private int capacity;
     private int size;
 
+    @SuppressWarnings("unchecked")
     public MyStack(int capacity) {
         this.items = (T[]) new Object[capacity];
         this.capacity = capacity;
