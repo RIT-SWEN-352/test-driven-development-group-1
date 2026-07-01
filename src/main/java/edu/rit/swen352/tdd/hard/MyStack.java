@@ -51,7 +51,9 @@ public class MyStack<T> {
     private int size;
 
     public MyStack(int capacity) {
-
+        this.items = (T[]) new Object[capacity];
+        this.capacity = capacity;
+        this.size = 0;
     }
 
     public int getCapacity() {
