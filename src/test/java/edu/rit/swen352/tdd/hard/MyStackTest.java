@@ -43,6 +43,13 @@ class MyStackTest {
     }  
 
     // isEmpty() TEST
+    @Test
+    @DisplayName("isEmpty: returns true for an empty stack")
+    void testIsEmptyTrue() {
+        int givenCapacity = 5;
+        MyStack<Integer> stack = new MyStack<Integer>(givenCapacity);
+        assertTrue(stack.isEmpty());
+    }  
 
     // size() TEST
 

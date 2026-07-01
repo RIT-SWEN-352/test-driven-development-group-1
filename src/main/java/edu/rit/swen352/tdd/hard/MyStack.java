@@ -73,4 +73,8 @@ public class MyStack<T> {
     public int getCapacity() {
         return this.capacity;
     }
+
+    public boolean isEmpty() {
+        return false;
+    }
 }
