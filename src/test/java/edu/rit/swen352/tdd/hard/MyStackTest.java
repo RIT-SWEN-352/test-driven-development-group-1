@@ -106,6 +106,22 @@ class MyStackTest {
     }
 
     // pop() TESTS
+    @Test
+    @DisplayName("pop: removes and returns the top element of the stack")
+    void testPopRemovesAndReturnsTopElement() {
+        int givenCapacity = 5;
+        MyStack<Integer> stack = new MyStack<Integer>(givenCapacity);
+
+        int lastPushedElement = 5;
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        stack.push(4);
+        stack.push(lastPushedElement);
+
+        int popResult = stack.pop();
+        assertEquals(lastPushedElement, popResult);
+    }  
 
     // peek() TESTS
 }

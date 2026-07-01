@@ -92,4 +92,8 @@ public class MyStack<T> {
         }
         items[size++] = element;
     }
+
+    public int pop() {
+        return 0;
+    }
 }
