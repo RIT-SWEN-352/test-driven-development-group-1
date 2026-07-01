@@ -26,6 +26,13 @@ class MyStackTest {
         assertEquals(20, stack.getCapacity());
     }  
 
+    @Test
+    @DisplayName("Constructor: with negative capacity, checks if exception is thrown")
+    void testConstructorNegativeCapacity() {
+        int negativeCapacity = -10;
+        assertThrows(IllegalArgumentException.class, () -> new MyStack<Integer>(negativeCapacity));
+    } 
+
     // getCapacity() TEST
 
     // isEmpty() TEST
