@@ -87,6 +87,9 @@ public class MyStack<T> {
     }
 
     public void push(T element) {
+        if (capacity == size) {
+            throw new IllegalStateException("ERROR: Can't push when stack is full");
+        }
         items[size++] = element;
     }
 }
