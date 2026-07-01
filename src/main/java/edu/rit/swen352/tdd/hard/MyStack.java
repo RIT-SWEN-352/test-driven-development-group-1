@@ -54,6 +54,10 @@ public class MyStack<T> {
 
     @SuppressWarnings("unchecked")
     public MyStack(int capacity) {
+        if (capacity < 0) {
+            throw new IllegalArgumentException("ERROR: Stack capacity must be greater than 0");
+        }
+
         this.items = (T[]) new Object[capacity];
         this.capacity = capacity;
         this.size = 0;
