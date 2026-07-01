@@ -72,6 +72,17 @@ class MyStackTest {
         assertEquals(expected, stack.size());
     }  
 
+    @Test
+    @DisplayName("size: returns stack size after multiple pushes")
+    void testSizeAfterMultiplePushes() {
+        int givenCapacity = 5;
+        MyStack<Integer> stack = new MyStack<Integer>(givenCapacity);
+        
+        stack.push(1);
+        stack.push(2);
+        assertEquals(2, stack.size());
+    }  
+
     // push() TESTS
 
     // pop() TESTS
