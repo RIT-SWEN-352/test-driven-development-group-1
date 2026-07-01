@@ -34,6 +34,13 @@ class MyStackTest {
     } 
 
     // getCapacity() TEST
+    @Test
+    @DisplayName("getCapacity: returns the fixed capacity of the stack")
+    void testGetCapacity() {
+        int givenCapacity = 41;
+        MyStack<Integer> stack = new MyStack<Integer>(givenCapacity);
+        assertEquals(41, stack.getCapacity());
+    }  
 
     // isEmpty() TEST
 
