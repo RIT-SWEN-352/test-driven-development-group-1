@@ -84,6 +84,16 @@ class MyStackTest {
     }  
 
     // push() TESTS
+    @Test
+    @DisplayName("push: adds an element to the stack")
+    void testPushElementToStack() {
+        int givenCapacity = 5;
+        MyStack<Integer> stack = new MyStack<Integer>(givenCapacity);
+
+        int pushedElement = 30;
+        stack.push(pushedElement);
+        assertEquals(1, stack.size());
+    }  
 
     // pop() TESTS
 
