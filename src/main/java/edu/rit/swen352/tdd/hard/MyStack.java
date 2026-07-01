@@ -107,6 +107,7 @@ public class MyStack<T> {
     }
 
     public T peek() {
-        return null;
+        T topElement = items[size - 1];
+        return topElement;
     }
 }

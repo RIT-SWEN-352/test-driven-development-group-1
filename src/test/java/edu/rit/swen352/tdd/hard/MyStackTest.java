@@ -168,8 +168,10 @@ class MyStackTest {
         stack.push(3);
 
         int expectedPeekELement = 3;
-        
+        int expectedSize = stack.size();
+
         assertEquals(expectedPeekELement, stack.peek());
+        assertEquals(expectedSize, stack.size()); // Check size change after a peek
     }
 }
 
