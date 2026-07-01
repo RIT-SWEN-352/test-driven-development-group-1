@@ -65,7 +65,7 @@ public class MyStack<T> {
 
     @SuppressWarnings("unchecked")
     public MyStack() {
-        this.items = (T[]) new Object[capacity];
+        this.items = (T[]) new Object[DEFAULT_CAPACITY];
         this.capacity = DEFAULT_CAPACITY;
         this.size = 0;
     }
