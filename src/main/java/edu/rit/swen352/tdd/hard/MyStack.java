@@ -56,7 +56,7 @@ public class MyStack<T> {
 
     @SuppressWarnings("unchecked")
     public MyStack(int capacity) {
-        if (capacity < 0) {
+        if (capacity <= 0) {
             throw new IllegalArgumentException("ERROR: Stack capacity must be greater than 0");
         }
 
