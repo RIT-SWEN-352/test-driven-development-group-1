@@ -1,5 +1,7 @@
 package edu.rit.swen352.tdd.hard;
 
+import java.util.NoSuchElementException;
+
 /**
  * MyStack is a fixed-size, LIFO (last-in-first-out) stack.
  * All elements must be non-{@code null}.
@@ -46,4 +48,70 @@ package edu.rit.swen352.tdd.hard;
  * @param <T> the type of elements in the stack.
  */
 public class MyStack<T> {
+    private static final int DEFAULT_CAPACITY = 20;
+
+    private T[] items;
+    private int capacity;
+    private int size;
+
+    @SuppressWarnings("unchecked")
+    public MyStack(int capacity) {
+        if (capacity <= 0) {
+            throw new IllegalArgumentException("ERROR: Stack capacity must be greater than 0");
+        }
+
+        this.items = (T[]) new Object[capacity];
+        this.capacity = capacity;
+        this.size = 0;
+    }
+
+    @SuppressWarnings("unchecked")
+    public MyStack() {
+        this.items = (T[]) new Object[DEFAULT_CAPACITY];
+        this.capacity = DEFAULT_CAPACITY;
+        this.size = 0;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public boolean isEmpty() {
+        if (size == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public void push(T element) {
+        if (capacity == size) {
+            throw new IllegalStateException("ERROR: Can't push when stack is full");
+        }
+        items[size++] = element;
+    }
+
+    public T pop() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("ERROR: Can't pop when stack is empty");
+        }
+
+        T element;
+        element = items[--size];
+        items[size] = null; 
+
+        return element;
+    }
+
+    public T peek() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("ERROR: Can't peek when stack is empty"); 
+        }
+        T topElement = items[size - 1];
+        return topElement;
+    }
 }

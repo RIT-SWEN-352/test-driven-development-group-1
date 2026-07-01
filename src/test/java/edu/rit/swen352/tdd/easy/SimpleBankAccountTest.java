@@ -10,4 +10,162 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class SimpleBankAccountTest {
 
+    // CONSTRUCTOR TESTS
+    @Test
+    @DisplayName("Constructor: with supplied balance (ex:3000.75")
+    void testConstructorWithSuppliedBalance() {
+        float balance = 3000.75f;
+        SimpleBankAccount simpleAccount = new SimpleBankAccount(balance);
+        assertEquals(balance, simpleAccount.getBalance());
+    }
+
+    @Test
+    @DisplayName("Constructor: without supplied balance (default = 0")
+    void testConstructorWithoutSuppliedBalance() {
+        SimpleBankAccount simpleAccount = new SimpleBankAccount();
+        float expectedBalance = 0.00f;
+        assertEquals(expectedBalance, simpleAccount.getBalance());
+    }
+
+    // getBalance() TEST
+    // Since constructor needed getBalance, the test for the getter passed automatically
+    @Test
+    @DisplayName("getBalance: returns current balance")
+    void testGetBalanceNormal() {
+        float balance = 10.75f;
+        SimpleBankAccount simpleAccount = new SimpleBankAccount(balance);
+        assertEquals(balance, simpleAccount.getBalance());
+    }
+
+    // isAccountEmpty() TESTS
+    @Test
+    @DisplayName("isAccountEmpty(): returns true for account balance being 0")
+    void testIsAccountemptyTrue() {
+        SimpleBankAccount simpleAccount = new SimpleBankAccount();
+        boolean result = simpleAccount.isAccountEmpty();
+        assertTrue(result);
+    }
+
+    @Test
+    @DisplayName("isAccountEmpty(): returns false when account balance is non-zero")
+    void testIsAccountemptyFalse() {
+        float balance = 100.15f;
+        SimpleBankAccount simpleAccount = new SimpleBankAccount(balance);
+        boolean result = simpleAccount.isAccountEmpty();
+        assertFalse(result);
+    }
+
+    // deposit() TESTS
+    @Test
+    @DisplayName("deposit(): adds to non-zero balance")
+    void testDepositToNonZeroBalance() {
+        float oldBalance = 10.15f; 
+        float expectedBalance = 20.30f;
+        float depositAmount = oldBalance;
+
+        SimpleBankAccount simpleAccount = new SimpleBankAccount(oldBalance);
+        
+        simpleAccount.deposit(depositAmount);
+
+        float actualBalance = simpleAccount.getBalance();
+        assertEquals(expectedBalance, actualBalance);
+    }
+
+    @Test
+    @DisplayName("deposit(): adds to zero balance to set balance to deposit amount")
+    void testDepositOnZeroBalance() {
+        float depositAmount = 50.50f;
+
+        SimpleBankAccount simpleAccount = new SimpleBankAccount();
+        
+        simpleAccount.deposit(depositAmount);
+
+        float actualBalance = simpleAccount.getBalance();
+        assertEquals(depositAmount, actualBalance);
+    }
+
+    @Test
+    @DisplayName("deposit(): throws exception when negative amount is deposited")
+    void testDepositNegativeAmountException() {
+        float balance = 10.00f;
+        float depositAmount = -50.50f;
+
+        SimpleBankAccount simpleAccount = new SimpleBankAccount(balance);
+        
+        assertThrows(IllegalArgumentException.class, () -> simpleAccount.deposit(depositAmount));
+    }
+
+    // withdraw() TESTS
+    @Test
+    @DisplayName("withdraw(): subtracts from balance successfully")
+    void testWithdrawFromNormalBalance() {
+        float oldBalance = 20.15f; 
+        float expectedBalance = 10.00f;
+        float withdrawalAmount = 10.15f;
+
+        SimpleBankAccount simpleAccount = new SimpleBankAccount(oldBalance);
+        
+        simpleAccount.withdraw(withdrawalAmount);
+
+        float actualBalance = simpleAccount.getBalance();
+        assertEquals(expectedBalance, actualBalance);
+    }
+
+    @Test
+    @DisplayName("withdraw(): subtracts too much from balance, causing an exception to be thrown")
+    void testWithdrawExceedsBalance() {
+        float oldBalance = 20.15f; 
+        float withdrawalAmount = 45.15f;
+
+        SimpleBankAccount simpleAccount = new SimpleBankAccount(oldBalance);
+        
+        assertThrows(IllegalArgumentException.class, () -> simpleAccount.withdraw(withdrawalAmount));
+    }
+
+    @Test
+    @DisplayName("withdraw(): subtracts a negative amount from balance, causing an exception to be thrown")
+    void testWithdrawNegativeAmount() {
+        float oldBalance = 20.15f; 
+        float withdrawalAmount = -100.15f;
+
+        SimpleBankAccount simpleAccount = new SimpleBankAccount(oldBalance);
+        
+        assertThrows(IllegalArgumentException.class, () -> simpleAccount.withdraw(withdrawalAmount));
+    }
+
+    // toString() TESTS
+    @Test
+    @DisplayName("toString(): prints out balance with non-zero decimal amounts")
+    void testToStringNonZeroDecimalAmount() {
+        float balance = 20.15f; 
+        String expectedToString = "$20.15";
+
+        SimpleBankAccount simpleAccount = new SimpleBankAccount(balance);
+        
+        String actualToString = simpleAccount.toString();
+        assertEquals(expectedToString, actualToString);
+    }
+
+    @Test
+    @DisplayName("toString(): prints out zero balance")
+    void testToStringZeroBalance() {
+        String expectedToString = "$0.00";
+
+        SimpleBankAccount simpleAccount = new SimpleBankAccount();
+        
+        String actualToString = simpleAccount.toString();
+        assertEquals(expectedToString, actualToString);
+    }
+
+    @Test
+    @DisplayName("toString(): prints out whole number balance")
+    void testToStringWholeNumberBalance() {
+        float balance = 30f; 
+        String expectedToString = "$30.00";
+
+        SimpleBankAccount simpleAccount = new SimpleBankAccount(balance);
+        
+        String actualToString = simpleAccount.toString();
+        assertEquals(expectedToString, actualToString);
+    }
 }
