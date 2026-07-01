@@ -42,13 +42,24 @@ class MyStackTest {
         assertEquals(41, stack.getCapacity());
     }  
 
-    // isEmpty() TEST
+    // isEmpty() TESTS
     @Test
     @DisplayName("isEmpty: returns true for an empty stack")
     void testIsEmptyTrue() {
         int givenCapacity = 5;
         MyStack<Integer> stack = new MyStack<Integer>(givenCapacity);
         assertTrue(stack.isEmpty());
+    } 
+    
+    @Test
+    @DisplayName("isEmpty: returns false for an non-empty stack")
+    void testIsEmptyFalse() {
+        int givenCapacity = 5;
+        MyStack<Integer> stack = new MyStack<Integer>(givenCapacity);
+
+        int pushedElement = 10;
+        stack.push(pushedElement);
+        assertFalse(stack.isEmpty());
     }  
 
     // size() TEST

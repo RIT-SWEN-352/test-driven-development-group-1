@@ -71,7 +71,7 @@ public class MyStack<T> {
     }
 
     public int getCapacity() {
-        return this.capacity;
+        return capacity;
     }
 
     public boolean isEmpty() {
@@ -80,5 +80,9 @@ public class MyStack<T> {
         } else {
             return false;
         }
+    }
+
+    public void push(T element) {
+
     }
 }
