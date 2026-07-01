@@ -46,6 +46,8 @@ package edu.rit.swen352.tdd.hard;
  * @param <T> the type of elements in the stack.
  */
 public class MyStack<T> {
+    private static final int DEFAULT_CAPACITY = 20;
+
     private T[] items;
     private int capacity;
     private int size;
@@ -60,7 +62,7 @@ public class MyStack<T> {
     @SuppressWarnings("unchecked")
     public MyStack() {
         this.items = (T[]) new Object[capacity];
-        this.capacity = capacity;
+        this.capacity = DEFAULT_CAPACITY;
         this.size = 0;
     }
 
