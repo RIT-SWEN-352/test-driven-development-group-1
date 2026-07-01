@@ -173,5 +173,13 @@ class MyStackTest {
         assertEquals(expectedPeekELement, stack.peek());
         assertEquals(expectedSize, stack.size()); // Check size change after a peek
     }
+
+    @Test
+    @DisplayName("peek: throws NoSuchElementException when stack is empty")
+    void testPeekThrowsExceptionWhenEmpty() {
+        int givenCapacity = 5;
+        MyStack<Integer> stack = new MyStack<Integer>(givenCapacity);
+        assertThrows(NoSuchElementException.class, () -> stack.peek());
+    }
 }
 
