@@ -150,12 +150,26 @@ class MyStackTest {
         stack.push(1);
         stack.push(2);
         stack.push(3);
-        
+
         assertEquals(3, stack.pop());
         assertEquals(2, stack.pop());
         assertEquals(1, stack.pop());
     }
 
     // peek() TESTS
+    @Test
+    @DisplayName("peek: returns top element of stack without removal")
+    void testPeekNormalCase() {
+        int givenCapacity = 5;
+        MyStack<Integer> stack = new MyStack<Integer>(givenCapacity);
+
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+
+        int expectedPeekELement = 3;
+        
+        assertEquals(expectedPeekELement, stack.peek());
+    }
 }
 

@@ -105,4 +105,8 @@ public class MyStack<T> {
 
         return element;
     }
+
+    public T peek() {
+        return null;
+    }
 }
