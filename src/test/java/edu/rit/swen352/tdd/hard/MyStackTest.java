@@ -119,8 +119,12 @@ class MyStackTest {
         stack.push(4);
         stack.push(lastPushedElement);
 
+        int expectedSize = stack.size() - 1;
+
         int popResult = stack.pop();
-        assertEquals(lastPushedElement, popResult);
+
+        assertEquals(expectedSize, stack.size()); // Check size change
+        assertEquals(lastPushedElement, popResult); // Check for correct element
     }  
 
     // peek() TESTS
