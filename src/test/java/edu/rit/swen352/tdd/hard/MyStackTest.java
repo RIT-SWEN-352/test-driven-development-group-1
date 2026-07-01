@@ -29,7 +29,7 @@ class MyStackTest {
     }  
 
     @Test
-    @DisplayName("Constructor: with negative capacity, checks if exception is thrown")
+    @DisplayName("Constructor: with negative or 0 capacity, checks if exception is thrown")
     void testConstructorNegativeCapacity() {
         int negativeCapacity = -10;
         assertThrows(IllegalArgumentException.class, () -> new MyStack<Integer>(negativeCapacity));
@@ -140,6 +140,21 @@ class MyStackTest {
         stack.pop();
         assertThrows(NoSuchElementException.class, () -> stack.pop()); // 2 pops
     }  
+
+    @Test
+    @DisplayName("pop: follows LIFO order by doing mutiple pops")
+    void testPopMultipleTimes() {
+        int givenCapacity = 5;
+        MyStack<Integer> stack = new MyStack<Integer>(givenCapacity);
+
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        
+        assertEquals(3, stack.pop());
+        assertEquals(2, stack.pop());
+        assertEquals(1, stack.pop());
+    }
 
     // peek() TESTS
 }
