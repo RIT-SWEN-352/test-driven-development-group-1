@@ -83,7 +83,7 @@ public class MyStack<T> {
     }
 
     public int size() {
-        return 1;
+        return size;
     }
 
     public void push(T element) {
