@@ -46,4 +46,15 @@ package edu.rit.swen352.tdd.hard;
  * @param <T> the type of elements in the stack.
  */
 public class MyStack<T> {
+    private T[] items;
+    private int capacity;
+    private int size;
+
+    public MyStack(int capacity) {
+
+    }
+
+    public int getCapacity() {
+        return this.capacity;
+    }
 }
