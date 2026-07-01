@@ -63,6 +63,14 @@ class MyStackTest {
     }  
 
     // size() TEST
+    @Test
+    @DisplayName("size: returns size 0 for a new empty stack")
+    void testSizeZeroOnNewStack() {
+        MyStack<Integer> stack = new MyStack<Integer>();
+        
+        int expected = 0;
+        assertEquals(expected, stack.size());
+    }  
 
     // push() TESTS
 
