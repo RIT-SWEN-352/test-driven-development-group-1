@@ -13,7 +13,7 @@ class MyStackTest {
     // ctor TESTS
     @Test
     @DisplayName("Constructor: with provided capacity (ex: 3)")
-    void constructorWithCapacity() {
+    void testConstructorWithCapacity() {
         int givenCapacity = 3;
         MyStack<Integer> stack = new MyStack<Integer>(givenCapacity);
         assertEquals(givenCapacity, stack.getCapacity());
@@ -21,7 +21,7 @@ class MyStackTest {
 
     @Test
     @DisplayName("Constructor: without provided capacity (defaults to 20)")
-    void constructorWithoutCapacity() {
+    void tesConstructorWithoutCapacity() {
         MyStack<Integer> stack = new MyStack<Integer>();
         assertEquals(20, stack.getCapacity());
     }  
