@@ -102,6 +102,7 @@ public class MyStack<T> {
 
         T element;
         element = items[--size];
+        items[size] = null; 
 
         return element;
     }
