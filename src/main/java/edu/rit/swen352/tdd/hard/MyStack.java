@@ -107,6 +107,9 @@ public class MyStack<T> {
     }
 
     public T peek() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("ERROR: Can't peek when stack is empty"); 
+        }
         T topElement = items[size - 1];
         return topElement;
     }
