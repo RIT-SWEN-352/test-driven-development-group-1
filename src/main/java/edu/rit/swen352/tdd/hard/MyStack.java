@@ -83,6 +83,6 @@ public class MyStack<T> {
     }
 
     public void push(T element) {
-
+        items[size++] = element;
     }
 }
